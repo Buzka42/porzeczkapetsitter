@@ -192,11 +192,7 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .gi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,16,13,.55) 0%,transparent 45%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:16px 18px}
 .gi:hover .gi-overlay{opacity:1}
 .gi-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:#fff}
-.gi.is-vid .vid-thumb{position:absolute;inset:0;background:var(--cream);z-index:1;transition:opacity .45s}
-.gi.is-vid:hover .vid-thumb{opacity:0}
-.gi.is-vid .play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;transition:opacity .4s,transform .4s var(--ease)}
-.gi.is-vid .play-icon svg{width:16px;height:16px;color:var(--currant);margin-left:3px}
-.gi.is-vid:hover .play-icon{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+.gi.is-vid video{object-fit:cover}
 
 /* ═══ AREA ══════════════════════════════════ */
 #obszar{background:var(--ink);color:#FAF7F3;padding:140px 0;margin-top:60px}
@@ -533,17 +529,17 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
   <div class="gal-strip-wrap rv" id="gstrip-wrap">
     <div class="gal-strip" id="gstrip">
       <div class="gi"><img src="klienci/Artur.jpg" alt="Artur" loading="lazy"><div class="gi-overlay"><span class="gi-name">Artur</span></div></div>
-      <div class="gi is-vid"><div class="vid-thumb"></div><video muted loop playsinline preload="metadata"><source src="1000006961.mp4" type="video/mp4"></video><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="gi-overlay"></div></div>
+      <div class="gi is-vid"><video muted loop playsinline preload="auto"><source src="1000006961.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
       <div class="gi"><img src="klienci/Blade%20i%20Nala.jpg" alt="Blade i Nala" loading="lazy"><div class="gi-overlay"><span class="gi-name">Blade &amp; Nala</span></div></div>
       <div class="gi"><img src="klienci/Buzka.jpg" alt="Buzka" loading="lazy"><div class="gi-overlay"><span class="gi-name">Buzka</span></div></div>
       <div class="gi"><img src="klienci/Dora.jpg" alt="Dora" loading="lazy"><div class="gi-overlay"><span class="gi-name">Dora</span></div></div>
       <div class="gi"><img src="klienci/Elmo.jpg" alt="Elmo" loading="lazy"><div class="gi-overlay"><span class="gi-name">Elmo</span></div></div>
-      <div class="gi is-vid"><div class="vid-thumb"></div><video muted loop playsinline preload="metadata"><source src="1000006971.mp4" type="video/mp4"></video><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="gi-overlay"></div></div>
+      <div class="gi is-vid"><video muted loop playsinline preload="auto"><source src="1000006971.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
       <div class="gi"><img src="klienci/Galip.jpg" alt="Galip" loading="lazy"><div class="gi-overlay"><span class="gi-name">Galip</span></div></div>
       <div class="gi"><img src="klienci/Holly.jpeg" alt="Holly" loading="lazy"><div class="gi-overlay"><span class="gi-name">Holly</span></div></div>
       <div class="gi"><img src="klienci/Kicia.jpg" alt="Kicia" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kicia</span></div></div>
       <div class="gi"><img src="klienci/Kofi.jpeg" alt="Kofi" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kofi</span></div></div>
-      <div class="gi is-vid"><div class="vid-thumb"></div><video muted loop playsinline preload="metadata"><source src="1000006954.mp4" type="video/mp4"></video><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="gi-overlay"></div></div>
+      <div class="gi is-vid"><video muted loop playsinline preload="auto"><source src="1000006954.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
       <div class="gi"><img src="klienci/Kreska.png" alt="Kreska" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kreska</span></div></div>
       <div class="gi"><img src="klienci/Kronos.jpg" alt="Kronos" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kronos</span></div></div>
       <div class="gi"><img src="klienci/Lucky.jpg" alt="Lucky" loading="lazy"><div class="gi-overlay"><span class="gi-name">Lucky</span></div></div>
@@ -668,12 +664,25 @@ gw.addEventListener('mouseup',()=>{gDown=false;gw.classList.remove('dragging');}
 gw.addEventListener('mousemove',e=>{if(!gDown)return;e.preventDefault();gw.scrollLeft=gScrollL-(e.pageX-gw.offsetLeft-gStartX)*1.4;});
 gw.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();gw.scrollLeft+=e.deltaY*1.2;}},{passive:false});
 
-/* ── Gallery videos on hover ─────────────── */
-document.querySelectorAll('.gi.is-vid').forEach(item=>{
-  const v=item.querySelector('video');
-  item.addEventListener('mouseenter',()=>v.play());
-  item.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0;});
-});
+/* ── Gallery videos – scroll-triggered autoplay (max 1 at a time) ── */
+(()=>{
+  const gw=document.getElementById('gstrip-wrap');
+  let activeVid=null;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      const v=e.target.querySelector('video');
+      if(e.isIntersecting){
+        if(activeVid&&activeVid!==v){activeVid.pause();activeVid.currentTime=0;}
+        v.play().catch(()=>{});
+        activeVid=v;
+      } else {
+        v.pause();
+        if(activeVid===v)activeVid=null;
+      }
+    });
+  },{root:gw,threshold:0.55});
+  document.querySelectorAll('.gi.is-vid').forEach(el=>obs.observe(el));
+})();
 
 /* ── Smooth anchor ───────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
