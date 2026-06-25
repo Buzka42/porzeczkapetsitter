@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "title": "Design System: Petsitter Porzeczka",
+  "extensions": {
+    "colorMeta": {
+      "currant": {
+        "role": "primary",
+        "displayName": "Głęboki Porzeczkowy",
+        "canonical": "#591937",
+        "tonalRamp": ["#100208", "#220511", "#38081A", "#591937", "#7A2550", "#A84E7A", "#CC90B0", "#EDCFDF"]
+      },
+      "currant-hover": {
+        "role": "primary",
+        "displayName": "Porzeczka Hover",
+        "canonical": "#7A2550",
+        "tonalRamp": ["#190710", "#2D0D1F", "#471531", "#7A2550", "#9E4072", "#BC6F96", "#D4A0B9", "#EDD3E3"]
+      },
+      "currant-tint": {
+        "role": "primary",
+        "displayName": "Cień Porzeczki",
+        "canonical": "#F2E8EE",
+        "tonalRamp": ["#4B2838", "#6E3F55", "#935874", "#B67A98", "#CFA0B9", "#DCC0D0", "#EACEDE", "#F2E8EE"]
+      },
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Stary Pergamin",
+        "canonical": "#F7F3EE",
+        "tonalRamp": ["#524A42", "#6E6259", "#9B8C84", "#B8ACA3", "#CAC1B9", "#D9D2CB", "#EBE5DC", "#F7F3EE"]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Krem Śmietankowy",
+        "canonical": "#EFE8DE",
+        "tonalRamp": ["#4A4138", "#685E55", "#857870", "#A09288", "#BEB2A9", "#CBBFB5", "#D9D0C8", "#EFE8DE"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Lodowa Obwódka",
+        "canonical": "#E2D9CE",
+        "tonalRamp": ["#3F3630", "#5C5148", "#7D7066", "#9D9087", "#BEAFA6", "#CBBFB5", "#D8CFC7", "#E2D9CE"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ciemny Atrament",
+        "canonical": "#16100D",
+        "tonalRamp": ["#050302", "#16100D", "#2D2520", "#403830", "#5E5049", "#7D6D65", "#9B8C84", "#C8BDB8"]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Atrament Wtórny",
+        "canonical": "#5E5049",
+        "tonalRamp": ["#1B1512", "#2D2520", "#403830", "#5E5049", "#7D6D65", "#9B8C84", "#BAB0A9", "#D8D0C9"]
+      },
+      "ink-tertiary": {
+        "role": "neutral",
+        "displayName": "Atrament Popielny",
+        "canonical": "#9B8C84",
+        "tonalRamp": ["#2A2320", "#403830", "#5E5049", "#7D6D65", "#9B8C84", "#B8ACA3", "#CAC1B9", "#DDD5CD"]
+      },
+      "ink-on-dark": {
+        "role": "neutral",
+        "displayName": "Świt Pergaminu",
+        "canonical": "#FAF7F3",
+        "tonalRamp": ["#605850", "#857870", "#A09288", "#C0B5AE", "#D3CAC3", "#E2DBD5", "#EEE9E4", "#FAF7F3"]
+      },
+      "currant-on-dark": {
+        "role": "primary",
+        "displayName": "Matowa Różana",
+        "canonical": "#D4A0B9",
+        "tonalRamp": ["#3B0F23", "#5B1B3A", "#7D2E55", "#9E4472", "#BD6D94", "#D4A0B9", "#E5C3D3", "#F4E3EC"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only. Cormorant Garamond weight 300. One word in italic per heading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings (O mnie, Usługi, Galeria, Rezerwacja). Same calm register as Display at smaller scale."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, pull quotes. Italic variant used for emotional emphasis in quotes."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, paragraphs, about section. Max 65ch. Inter 300 with generous line-height (1.9)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Category labels above section headings. Uppercase Inter 500, currant color, letter-spacing 0.16em. Signature of each section."
+      }
+    },
+    "shadows": [
+      {
+        "name": "widget-ambient",
+        "value": "0 4px 40px rgba(22,16,13,.07)",
+        "purpose": "Used exclusively on the booking widget. The only shadow in the system — separates the white widget from the parchment background without lifting it."
+      },
+      {
+        "name": "btn-currant-hover",
+        "value": "0 10px 28px rgba(89,25,55,.3)",
+        "purpose": "Appears on primary ink button hover state when background shifts to currant. Directional glow that follows the brand accent."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for all transitions. Expo-out — fast start, decelerated arrival. Used on line reveals, fade reveals, hover transforms, and gallery scrolling."
+      },
+      {
+        "name": "line-reveal",
+        "value": "translateY(102%) → translateY(0), 0.9s cubic-bezier(0.16,1,0.3,1)",
+        "purpose": "Editorial headline entrance. Clip-parent overflow:hidden, text translateY(102%) → 0. Staggers across words for display headings."
+      },
+      {
+        "name": "fade-reveal",
+        "value": "opacity 0 + translateY(20px) → opacity 1 + translateY(0), 0.8s",
+        "purpose": "Secondary content reveal. Used on body text, images, contact blocks. Slower than line-reveal to sequence visually."
+      },
+      {
+        "name": "marquee",
+        "value": "translateX(0) → translateX(-50%), 28s linear infinite",
+        "purpose": "Services marquee strip. Seamless loop by duplicating content."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "768px", "purpose": "Single breakpoint. Below: stack layouts, collapse nav, reduce section padding." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Ink)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA. Pill shape, near-black ink background, shifts to currant on hover with directional lift.",
+      "html": "<button class=\"ds-btn-primary\"><span>Zarezerwuj wizytę</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M3 8h10M9 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:#16100D; color:#fff; font-family:'Inter',system-ui,sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:.8rem 1.8rem; border:none; border-radius:100px; cursor:pointer; transition:background .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover { background:#591937; transform:translateY(-2px); box-shadow:0 10px 28px rgba(89,25,55,.3); } .ds-btn-primary:focus-visible { outline:2px solid #591937; outline-offset:3px; }"
+    },
+    {
+      "name": "Ghost Button (Light on Dark)",
+      "kind": "button",
+      "refersTo": "button-ghost-light",
+      "description": "Secondary CTA for hero section. Transparent with white border, used against dark/image backgrounds.",
+      "html": "<button class=\"ds-btn-ghost-light\">Dowiedz się więcej</button>",
+      "css": ".ds-btn-ghost-light { display:inline-flex; align-items:center; gap:.5rem; background:transparent; color:#fff; font-family:'Inter',system-ui,sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; padding:.8rem 1.8rem; border:1.5px solid rgba(255,255,255,.45); border-radius:100px; cursor:pointer; transition:border-color .3s, background .3s, transform .3s cubic-bezier(.16,1,.3,1); } .ds-btn-ghost-light:hover { border-color:rgba(255,255,255,.85); background:rgba(255,255,255,.08); transform:translateY(-2px); } .ds-btn-ghost-light:focus-visible { outline:2px solid rgba(255,255,255,.7); outline-offset:3px; }"
+    },
+    {
+      "name": "Nav CTA (Underline Link)",
+      "kind": "nav",
+      "refersTo": "nav-cta",
+      "description": "Navigation booking link. No pill, no background — only an animated underline. White on hero, currant after scroll.",
+      "html": "<a href=\"#\" class=\"ds-nav-cta\">Rezerwacja</a>",
+      "css": ".ds-nav-cta { font-family:'Inter',system-ui,sans-serif; font-size:.73rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:rgba(255,255,255,.85); border-bottom:1.5px solid rgba(255,255,255,.6); padding-bottom:.1rem; transition:color .3s, border-color .3s; } .ds-nav-cta:hover { color:#fff; border-color:#fff; } .ds-nav-cta.scrolled { color:#591937; border-color:#591937; } .ds-nav-cta.scrolled:hover { color:#7A2550; border-color:#7A2550; }"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature component. Editorial four-column grid: index number | service name + description | price | arrow. Hover reveals tinted background and shifts accent color.",
+      "html": "<div class=\"ds-svc-row\">\n  <span class=\"ds-svc-num\">01</span>\n  <div class=\"ds-svc-info\">\n    <span class=\"ds-svc-name\">Spacer</span>\n    <p class=\"ds-svc-desc\">30–45 min · 1 pies 60 zł · 2 psy 80 zł · +20 zł w święta.</p>\n  </div>\n  <div class=\"ds-svc-price\">\n    <span class=\"ds-price-num\">od 60</span>\n    <span class=\"ds-price-unit\">zł / spacer</span>\n  </div>\n  <div class=\"ds-svc-arrow\">\n    <svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\"><path d=\"M3 9h12M11 5l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n  </div>\n</div>",
+      "css": ".ds-svc-row { display:grid; grid-template-columns:64px 1fr max-content 44px; align-items:center; gap:1.2rem; padding:1.6rem 0; border-top:1px solid #E2D9CE; position:relative; cursor:pointer; transition:color .3s cubic-bezier(.16,1,.3,1); } .ds-svc-row::after { content:''; position:absolute; inset:0; background:#F2E8EE; border-radius:4px; opacity:0; transition:opacity .3s cubic-bezier(.16,1,.3,1); z-index:0; } .ds-svc-row:hover::after { opacity:1; } .ds-svc-row > * { position:relative; z-index:1; } .ds-svc-num { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.05rem; font-weight:300; color:#9B8C84; transition:color .3s; } .ds-svc-row:hover .ds-svc-num { color:#591937; } .ds-svc-info { display:flex; flex-direction:column; gap:.25rem; } .ds-svc-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.6rem; font-weight:400; color:#16100D; transition:color .3s; } .ds-svc-row:hover .ds-svc-name { color:#591937; } .ds-svc-desc { font-family:'Inter',system-ui,sans-serif; font-size:.82rem; font-weight:300; color:#5E5049; line-height:1.7; } .ds-svc-price { text-align:right; } .ds-price-num { display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:2rem; font-weight:300; color:#591937; line-height:1.1; } .ds-price-unit { display:block; font-family:'Inter',system-ui,sans-serif; font-size:.72rem; font-weight:300; color:#9B8C84; margin-top:.15rem; } .ds-svc-arrow { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; color:#9B8C84; transition:transform .4s cubic-bezier(.16,1,.3,1), color .3s, background .3s; } .ds-svc-row:hover .ds-svc-arrow { color:#fff; background:#591937; transform:rotate(-45deg); }"
+    },
+    {
+      "name": "Booking Widget Frame",
+      "kind": "card",
+      "refersTo": "booking-widget",
+      "description": "The only card-like container in the system. Asymmetric corners (4px 24px) signal intentional craft. White on parchment with the sole ambient shadow.",
+      "html": "<div class=\"ds-booking-widget\">\n  <div class=\"ds-booking-step-label\">1 / 4 — Wybierz usługę</div>\n  <h3 class=\"ds-booking-title\">Jaką opieką jesteś zainteresowany?</h3>\n  <div class=\"ds-booking-body\">[content]</div>\n  <div class=\"ds-booking-footer\">\n    <button class=\"ds-booking-btn-next\">Dalej <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\"><path d=\"M2 7h10M8 3l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>\n  </div>\n</div>",
+      "css": ".ds-booking-widget { background:#fff; border:1px solid #E2D9CE; border-radius:4px 24px 4px 24px; padding:44px 48px; box-shadow:0 4px 40px rgba(22,16,13,.07); max-width:520px; } .ds-booking-step-label { font-family:'Inter',system-ui,sans-serif; font-size:.65rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:#9B8C84; margin-bottom:1.2rem; } .ds-booking-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.4rem,2.2vw,1.75rem); font-weight:300; color:#16100D; line-height:1.2; margin:0 0 1.8rem; } .ds-booking-body { margin-bottom:1.8rem; } .ds-booking-footer { display:flex; justify-content:flex-end; } .ds-booking-btn-next { display:inline-flex; align-items:center; gap:.5rem; background:#591937; color:#fff; font-family:'Inter',system-ui,sans-serif; font-size:.75rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:.72rem 1.6rem; border:none; border-radius:3px; cursor:pointer; transition:background .25s, transform .25s cubic-bezier(.16,1,.3,1); } .ds-booking-btn-next:hover { background:#7A2550; transform:translateY(-1px); } .ds-booking-btn-next:focus-visible { outline:2px solid #591937; outline-offset:3px; }"
+    },
+    {
+      "name": "Input Field (Booking Form)",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Form field for booking widget — name, phone, notes. Minimal warm stroke, currant focus ring, no background fill.",
+      "html": "<div class=\"ds-field\">\n  <label class=\"ds-field-label\" for=\"pet-name\">Imię pupila</label>\n  <input class=\"ds-field-input\" id=\"pet-name\" type=\"text\" placeholder=\"np. Filemon\" />\n</div>",
+      "css": ".ds-field { display:flex; flex-direction:column; gap:.4rem; } .ds-field-label { font-family:'Inter',system-ui,sans-serif; font-size:.65rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:#9B8C84; } .ds-field-input { font-family:'Inter',system-ui,sans-serif; font-size:.88rem; font-weight:300; color:#16100D; background:#fff; border:1.5px solid #E2D9CE; border-radius:4px; padding:.6rem .8rem; width:100%; box-sizing:border-box; transition:border-color .2s; outline:none; } .ds-field-input::placeholder { color:#9B8C84; } .ds-field-input:hover { border-color:#5E5049; } .ds-field-input:focus { border-color:#591937; }"
+    },
+    {
+      "name": "Calendar Day (Range States)",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Booking calendar cell. Shows five states: default, available-hover, selected-single, range-start, range-end, in-range. European Mon-start, Polish locale.",
+      "html": "<div class=\"ds-cal-grid\">\n  <span class=\"ds-cal-day\">5</span>\n  <span class=\"ds-cal-day ds-cal-today\">6</span>\n  <span class=\"ds-cal-day ds-cal-available\">7</span>\n  <span class=\"ds-cal-day ds-cal-range-start\">8</span>\n  <span class=\"ds-cal-day ds-cal-in-range\">9</span>\n  <span class=\"ds-cal-day ds-cal-in-range\">10</span>\n  <span class=\"ds-cal-day ds-cal-range-end\">11</span>\n</div>",
+      "css": ".ds-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; } .ds-cal-day { font-family:'Inter',system-ui,sans-serif; font-size:.8rem; font-weight:300; color:#5E5049; aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; transition:background .2s, color .2s; } .ds-cal-day:hover { background:#F2E8EE; color:#591937; } .ds-cal-today { font-weight:500; } .ds-cal-available { color:#16100D; } .ds-cal-range-start { background:#591937; color:#fff; border-radius:50% 0 0 50%; } .ds-cal-in-range { background:#F2E8EE; color:#591937; border-radius:0; } .ds-cal-range-end { background:#591937; color:#fff; border-radius:0 50% 50% 0; } .ds-cal-unavailable { color:#E2D9CE; pointer-events:none; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed header with two states: transparent on hero (white links), frosted parchment after scroll (dark links, currant CTA). Backdrop-filter blur for glass feel.",
+      "html": "<nav class=\"ds-nav ds-nav-scrolled\">\n  <div class=\"ds-nav-logo\">Porzeczka</div>\n  <div class=\"ds-nav-links\">\n    <a href=\"#\" class=\"ds-nav-link\">Usługi</a>\n    <a href=\"#\" class=\"ds-nav-link\">O mnie</a>\n    <a href=\"#\" class=\"ds-nav-link\">Galeria</a>\n    <a href=\"#\" class=\"ds-nav-link\">Kontakt</a>\n    <a href=\"#\" class=\"ds-nav-cta-link\">Rezerwacja</a>\n  </div>\n</nav>",
+      "css": ".ds-nav { position:fixed; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 48px; z-index:100; transition:background .5s, backdrop-filter .5s, box-shadow .5s, padding .5s; } .ds-nav.ds-nav-scrolled { background:rgba(247,243,238,.93); backdrop-filter:blur(12px); box-shadow:0 1px 0 #E2D9CE; padding:.9rem 48px; } .ds-nav-logo { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:400; color:rgba(255,255,255,.9); letter-spacing:.04em; transition:color .3s; } .ds-nav-scrolled .ds-nav-logo { color:#16100D; } .ds-nav-links { display:flex; align-items:center; gap:2.2rem; } .ds-nav-link { font-family:'Inter',system-ui,sans-serif; font-size:.73rem; font-weight:400; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:rgba(255,255,255,.75); position:relative; transition:color .3s; } .ds-nav-scrolled .ds-nav-link { color:#5E5049; } .ds-nav-link::after { content:''; position:absolute; bottom:-3px; left:0; right:0; height:1px; background:#591937; transform:scaleX(0); transition:transform .3s cubic-bezier(.16,1,.3,1); } .ds-nav-link:hover { color:#fff; } .ds-nav-scrolled .ds-nav-link:hover { color:#16100D; } .ds-nav-link:hover::after { transform:scaleX(1); } .ds-nav-cta-link { font-family:'Inter',system-ui,sans-serif; font-size:.73rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:rgba(255,255,255,.85); border-bottom:1.5px solid rgba(255,255,255,.6); padding-bottom:.1rem; transition:color .3s, border-color .3s; } .ds-nav-scrolled .ds-nav-cta-link { color:#591937; border-color:#591937; } .ds-nav-cta-link:hover { color:#fff; border-color:#fff; } .ds-nav-scrolled .ds-nav-cta-link:hover { color:#7A2550; border-color:#7A2550; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Prywatna Winiarnia",
+    "overview": "Petsitter Porzeczka prezentuje się jak miejsce ekskluzywne, ale nie zimne — wyrafinowane, familijne, z głębią odkrywaną stopniowo. Nie krzyczysz, nie błagasz o uwagę. Marka przemawia ciszą, proporcją i precyzyjnie dobranym detalem. Jak dobry rocznik: im dłużej go poznajesz, tym więcej warstw odkrywasz.\n\nWizualnie: ciepłe, głębokie, organiczne. Nie elegancja korporacyjna. Nie \"professional pet care\" z pastelowymi łapkami. Typografia czyta się zamiast skanować. Fotografia ma więcej wspólnego z magazynem niż z serwisem ogłoszeń. Każda sekcja to krok w głąb relacji — od pierwszego wrażenia (hero), przez zaufanie (o mnie, usługi), aż po decyzję (rezerwacja).\n\nRuch jest intencjonalny: editorial line-reveals na nagłówkach, stopniowe fade-iny, cursor jako przedłużenie brandingu. Strona \"czyta się\" jak rozdział, nie renderuje jak interfejs.",
+    "keyCharacteristics": [
+      "Głęboki porzeczkowy na pergaminie — bogaty, nie agresywny",
+      "Cormorant Garamond jako głos marki — zmysłowy, wykształcony, niespiesznie",
+      "Asymetryczne border-radii jako sygnatura rękodzieła, nie szablonu",
+      "Whitespace jako luksus, nie pustka",
+      "Realne zdjęcia i wideo — autentyczność ponad stockiem"
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Głęboki Porzeczkowy (#591937) pojawia się na ≤10% powierzchni każdego ekranu. Jego rzadkość to jego wartość — gdy wzrok go spotyka, zatrzymuje się. Gdy jest wszędzie, jest niczym.",
+        "section": "colors"
+      },
+      {
+        "name": "The Italic Touch Rule",
+        "body": "Kursywa Cormorant jest zarezerwowana dla jednego słowa-klucza per nagłówek. Nigdy całe zdanie w italics (poza pullquote). Italic to gest emocjonalny, nie styl tekstu.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight Floor Rule",
+        "body": "Inter nigdy poniżej 300. Cormorant nigdy poniżej 300. Cienkie fonty na kremowym tle tworzą kontrast poniżej 4.5:1 — system nie wchodzi w tę pułapkę.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shadow Exception Rule",
+        "body": "Cień jest dozwolony wyłącznie na booking widget. Każdy inny element wymagający wyróżnienia musi używać kontrastu kolorystycznego lub obramowania — nigdy box-shadow jako pierwszego wyboru.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Pill Quarantine Rule",
+        "body": "border-radius: 100px jest dozwolony wyłącznie na .btn. Żaden tag, badge, label, element widgetu nie może używać pill. Asymetria lub ostre narożniki — to znaki systemu.",
+        "section": "components"
+      },
+      {
+        "name": "The Human Hand Rule",
+        "body": "Asymetryczne radii (4/24, 4/32, 6/40) to sygnatura marki — wyglądają jak świadomy wybór, nie skopiowany szablon. Narożniki są albo pill, albo asymetryczne, albo 0.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do używaj whitespace jako designu — padding: 140px 0 per sekcja mówi: \"to nie sklep, to doświadczenie\".",
+      "Do stosuj Cormorant italic wyłącznie na jednym słowie-kluczu per nagłówek — gest emocjonalny, nie styl.",
+      "Do utrzymuj Głęboki Porzeczkowy jako jedyny saturowany kolor — rzadkość to jego moc.",
+      "Do używaj asymetrycznych border-radii (4/24, 4/32, 6/40) jako sygnatury rzemiosła.",
+      "Do animuj nagłówki sekcji line-reveal (translateY(102%)→0) — editorial pacing.",
+      "Do kontrastuj sekcje naprzemiennym tłem (pergamin / krem / ciemny atrament).",
+      "Do stosuj cursor customowy — porzeczkowy na jasnym, biały na ciemnym hero.",
+      "Do sprawdzaj kontrast body text — Inter 300 na kremowym to pułapka; sprawdź 4.5:1."
+    ],
+    "donts": [
+      "Don't używaj kolorowych ilustracji, bajkowych grafik, ikon łap — kitsch pet industry to główna anty-referencja.",
+      "Don't stosuj pill (border-radius: 100px) poza .btn — tagi, labele, elementy widgetów: zawsze ostre lub asymetryczne.",
+      "Don't generuj \"generic AI slop\" — uniformowe karty, <input type=\"date\">, gradient overlaye, pastelowe boxy.",
+      "Don't dodawaj drugiego akcentu chromatycznego — Porzeczkowy jest samotny z wyboru.",
+      "Don't używaj stockowych zdjęć zwierząt — tylko realne fotografie podopiecznych Magdy.",
+      "Don't skaluj nagłówków display powyżej 8rem — strona mówi, nie krzyczy.",
+      "Don't stosuj uniform border-radius (np. 8px na wszystkim) — to znak szablonu, nie projektu.",
+      "Don't dodawaj elementów \"żeby były\" — każdy komponent musi pracować na zaufanie właściciela pupila."
+    ]
+  }
+}

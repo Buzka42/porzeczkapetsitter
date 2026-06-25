@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petsitter Porzeczka · Warszawa</title>
+  <meta name="description" content="Magda – profesjonalna petsitterka w Warszawie. Indywidualna opieka nad psami i kotami." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+/* ═══ TOKENS ═══════════════════════════════ */
+:root {
+  --ink:        #16100D;
+  --ink2:       #5E5049;
+  --ink3:       #9B8C84;
+  --parchment:  #F7F3EE;
+  --cream:      #EFE8DE;
+  --currant:    #591937;
+  --currant2:   #7A2550;
+  --currant-bg: #F2E8EE;
+  --border:     #E2D9CE;
+  --ease:       cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;font-weight:300;background:var(--parchment);color:var(--ink);overflow-x:hidden;cursor:none}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:none;border:none;background:none}
+
+/* ═══ CURSOR ════════════════════════════════ */
+#cd{position:fixed;width:6px;height:6px;border-radius:50%;background:var(--currant);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,opacity .3s}
+#cr{position:fixed;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--currant);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s var(--ease),height .35s var(--ease),opacity .3s;opacity:.5}
+body.hov #cr{width:44px;height:44px;opacity:.85}
+body.hov #cd{transform:translate(-50%,-50%) scale(1.6)}
+body.hero-zone #cd{background:rgba(255,255,255,.9)}
+body.hero-zone #cr{border-color:rgba(255,255,255,.5)}
+body.hero-zone.hov #cr{border-color:rgba(255,255,255,.85)}
+
+/* ═══ TYPE ══════════════════════════════════ */
+.serif{font-family:'Cormorant Garamond',serif}
+.label{font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--currant)}
+
+/* ═══ LINE REVEAL ═══════════════════════════ */
+.line-wrap{overflow:hidden;display:block}
+.line-inner{display:block;transform:translateY(102%);transition:transform .9s var(--ease)}
+.line-inner.in{transform:translateY(0)}
+
+/* ═══ FADE REVEAL ═══════════════════════════ */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}
+.rv.d2{transition-delay:.24s}
+.rv.d3{transition-delay:.36s}
+
+/* ═══ LAYOUT ════════════════════════════════ */
+.w{max-width:1280px;margin:0 auto;padding:0 48px}
+.section{padding:140px 0}
+
+/* ═══ BUTTONS ═══════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 1.8rem;border-radius:100px;font-size:.78rem;font-weight:400;letter-spacing:.06em;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s,color .3s}
+.btn svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--currant);transform:translateY(-2px);box-shadow:0 10px 28px rgba(89,25,55,.3)}
+.btn-ghost-light{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+.btn-ghost-light:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.75);transform:translateY(-2px)}
+.btn-ghost-dark{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost-dark:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+
+/* ═══ NAV ═══════════════════════════════════ */
+nav{position:fixed;inset:0 0 auto 0;z-index:200;padding:28px 0;transition:padding .5s var(--ease),background .5s,box-shadow .5s}
+nav.sc{padding:14px 0;background:rgba(247,243,238,.93);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;display:flex;align-items:center;gap:.55rem;color:#fff;transition:color .5s}
+.logo em{font-style:normal;color:rgba(212,160,185,.9)}
+nav.sc .logo{color:var(--ink)}
+nav.sc .logo em{color:var(--currant)}
+.nav-links{display:flex;align-items:center;gap:2.8rem;list-style:none}
+.nav-links a{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--currant);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+nav.sc .nav-links a{color:var(--ink2)}
+/* Nav CTA — no pill, just underlined text */
+.nav-cta{color:rgba(255,255,255,.85) !important;border-bottom:1.5px solid rgba(255,255,255,.4);padding-bottom:2px;letter-spacing:.1em}
+.nav-cta::after{display:none !important}
+.nav-cta:hover{color:#fff !important;border-color:rgba(255,255,255,.85)}
+nav.sc .nav-cta{color:var(--currant) !important;border-color:var(--currant)}
+nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--currant2)}
+
+/* ═══ HERO ══════════════════════════════════ */
+#hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-vid{position:absolute;inset:0}
+.hero-vid video{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,16,13,.85) 0%,rgba(22,16,13,.4) 45%,rgba(22,16,13,.15) 100%),linear-gradient(to right,rgba(22,16,13,.5) 0%,transparent 60%)}
+.hero-grain{position:absolute;inset:0;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;mix-blend-mode:overlay}
+.hero-watermark{position:absolute;right:-0.05em;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-weight:300;font-size:38vw;line-height:1;color:rgba(255,255,255,.025);pointer-events:none;user-select:none}
+.hero-body{position:relative;z-index:2;padding-bottom:80px;max-width:760px}
+.hero-kicker{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2rem;opacity:0;animation:fadeIn 1s .5s var(--ease) both}
+.hero-kicker::before{content:'';width:32px;height:1px;background:rgba(212,160,185,.6)}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.6rem,8vw,8rem);font-weight:300;color:#fff;line-height:1.02;margin-bottom:2.4rem}
+.hero-h1 em{font-style:italic;color:rgba(255,255,255,.72)}
+.hero-meta{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeIn 1s .8s var(--ease) both}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.62);max-width:380px;line-height:1.85}
+.hero-btns{display:flex;gap:.8rem}
+.hero-line-indicator{position:absolute;right:48px;bottom:80px;z-index:2;writing-mode:vertical-lr;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.hero-line-indicator::before{content:'';width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.4));animation:scrollPulse 2.5s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.3;transform:scaleY(.5)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ═══ MARQUEE ═══════════════════════════════ */
+.marquee-section{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:18px 0}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{display:inline-flex;align-items:center;gap:2rem;padding:0 2rem}
+.marquee-item span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--ink2)}
+.marquee-item span em{font-style:italic;color:var(--currant)}
+.marquee-sep{color:var(--currant);font-size:1.2rem;opacity:.5}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══ ABOUT ═════════════════════════════════ */
+#about{padding:140px 0}
+.about-grid{display:grid;grid-template-columns:420px 1fr;gap:112px;align-items:start}
+.about-img-col{position:relative}
+.about-img-frame{position:relative;overflow:hidden;border-radius:6px 40px 6px 40px;aspect-ratio:3/4}
+.about-img-frame img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1s var(--ease)}
+.about-img-col:hover .about-img-frame img{transform:scale(1.04)}
+.about-caption{position:absolute;bottom:-24px;right:-24px;background:var(--currant);color:#fff;padding:28px 32px;border-radius:4px;min-width:160px}
+.about-caption strong{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;line-height:1;display:block}
+.about-caption span{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.about-text-col{padding-top:32px}
+.about-label{margin-bottom:1.6rem}
+.about-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:300;line-height:1.08;margin-bottom:2.8rem}
+.about-h2 em{font-style:italic}
+.about-pull{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:300;font-style:italic;color:var(--currant);line-height:1.55;padding-left:1.4rem;border-left:2px solid var(--currant);margin-bottom:2.2rem}
+.about-body p{font-size:.93rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem}
+.about-sig{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--currant);margin-top:2.4rem}
+
+/* ═══ SERVICES ══════════════════════════════ */
+#uslugi{background:var(--cream);padding:140px 0}
+.uslugi-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:80px}
+.uslugi-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:300}
+.uslugi-h2 em{font-style:italic}
+.uslugi-sub{font-size:.9rem;color:var(--ink2);line-height:1.85;max-width:360px}
+.svc-list{border-top:1px solid var(--border)}
+.svc-row{display:grid;grid-template-columns:64px 1fr max-content 44px;align-items:center;gap:2.5rem;padding:2rem 0;border-bottom:1px solid var(--border);transition:background .35s;position:relative;cursor:none}
+.svc-row::after{content:'';position:absolute;left:-48px;right:-48px;top:0;bottom:0;background:var(--parchment);z-index:-1;opacity:0;transition:opacity .35s}
+.svc-row:hover::after{opacity:1}
+.svc-n{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--ink3);transition:color .3s}
+.svc-row:hover .svc-n{color:var(--currant)}
+.svc-info h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2vw,1.6rem);font-weight:400;margin-bottom:.25rem;transition:color .3s}
+.svc-row:hover .svc-info h3{color:var(--currant)}
+.svc-desc{font-size:.84rem;color:var(--ink3);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .4s;opacity:0}
+.svc-row:hover .svc-desc{max-height:60px;opacity:1}
+.svc-price{text-align:right}
+.svc-price-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--currant);display:block;line-height:1}
+.svc-price-unit{font-size:.72rem;color:var(--ink3);letter-spacing:.04em}
+.svc-price-num.svc-rng{font-size:1.45rem;line-height:1.1}
+.svc-arrow{width:36px;height:36px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s,transform .4s var(--ease);flex-shrink:0}
+.svc-arrow svg{width:14px;height:14px;color:var(--ink3);transition:color .3s}
+.svc-row:hover .svc-arrow{border-color:var(--currant);background:var(--currant);transform:rotate(45deg)}
+.svc-row:hover .svc-arrow svg{color:#fff}
+.svc-footer{margin-top:40px;display:flex;align-items:center;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border)}
+.svc-note{font-size:.84rem;color:var(--ink2);line-height:1.75;max-width:440px}
+.svc-note strong{color:var(--currant)}
+
+/* ═══ QUOTE INTERSTITIAL ════════════════════ */
+#quote{background:var(--currant);padding:120px 0;overflow:hidden;position:relative}
+.quote-deco{position:absolute;top:-.1em;left:48px;font-family:'Cormorant Garamond',serif;font-size:28rem;font-weight:300;line-height:1;color:rgba(255,255,255,.06);pointer-events:none;user-select:none}
+.quote-inner{position:relative;z-index:1;text-align:center;max-width:800px;margin:0 auto}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#fff;line-height:1.55;margin-bottom:2.4rem}
+.quote-author{display:flex;align-items:center;justify-content:center;gap:1rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.quote-author::before,.quote-author::after{content:'';width:40px;height:1px;background:rgba(255,255,255,.25)}
+
+/* ═══ GALLERY ═══════════════════════════════ */
+#galeria{padding:140px 0 0;background:var(--parchment)}
+.gal-head{display:flex;align-items:flex-end;justify-content:space-between;padding:0 48px;margin-bottom:52px;max-width:1280px;margin-left:auto;margin-right:auto}
+.gal-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4rem);font-weight:300}
+.gal-h2 em{font-style:italic}
+.gal-hint{font-size:.78rem;color:var(--ink3);letter-spacing:.06em;display:flex;align-items:center;gap:.6rem;padding-bottom:.3rem}
+.gal-hint::before,.gal-hint::after{content:'';display:block;width:24px;height:1px;background:var(--ink3)}
+.gal-strip-wrap{overflow-x:scroll;overflow-y:hidden;scrollbar-width:none;cursor:grab;padding-bottom:60px}
+.gal-strip-wrap::-webkit-scrollbar{display:none}
+.gal-strip-wrap.dragging{cursor:grabbing}
+.gal-strip{display:flex;gap:14px;padding:0 48px;min-width:max-content;align-items:stretch}
+.gi{flex-shrink:0;height:420px;border-radius:4px;overflow:hidden;position:relative}
+.gi img,.gi video{height:100%;width:auto;min-width:200px;display:block;object-fit:cover;transition:transform .7s var(--ease);pointer-events:none}
+.gi:hover img{transform:scale(1.05)}
+.gi:hover video{transform:scale(1.04)}
+.gi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,16,13,.55) 0%,transparent 45%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:16px 18px}
+.gi:hover .gi-overlay{opacity:1}
+.gi-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;color:#fff}
+.gi.is-vid .vid-thumb{position:absolute;inset:0;background:var(--cream);z-index:1;transition:opacity .45s}
+.gi.is-vid:hover .vid-thumb{opacity:0}
+.gi.is-vid .play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;transition:opacity .4s,transform .4s var(--ease)}
+.gi.is-vid .play-icon svg{width:16px;height:16px;color:var(--currant);margin-left:3px}
+.gi.is-vid:hover .play-icon{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+
+/* ═══ AREA ══════════════════════════════════ */
+#obszar{background:var(--ink);color:#FAF7F3;padding:140px 0;margin-top:60px}
+.area-grid{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:center}
+.area-label{font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,160,185,.7);margin-bottom:1.4rem}
+.area-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;color:#FAF7F3;line-height:1.08;margin-bottom:1.8rem}
+.area-h2 em{font-style:italic;color:rgba(212,160,185,.75)}
+.area-p{font-size:.9rem;color:rgba(250,247,243,.55);line-height:1.9;margin-bottom:1rem}
+/* Districts: no pills — plain elegant text */
+.area-districts{font-size:.84rem;color:rgba(250,247,243,.42);line-height:2.2;letter-spacing:.05em;margin:1.8rem 0 2.4rem}
+.map-frame{border-radius:4px 32px 4px 32px;overflow:hidden;aspect-ratio:1;box-shadow:0 32px 80px rgba(0,0,0,.35)}
+.map-frame iframe{width:100%;height:100%;border:none;display:block;filter:sepia(85%) saturate(0.45) hue-rotate(330deg) brightness(.88)}
+
+/* ═══ CONTACT ═══════════════════════════════ */
+#kontakt{padding:140px 0;background:var(--parchment)}
+.kontakt-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:96px;align-items:start}
+.kontakt-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:300;margin-bottom:1rem}
+.kontakt-info h2 em{font-style:italic}
+.kontakt-info>p{font-size:.9rem;color:var(--ink2);margin-bottom:2.4rem;line-height:1.85}
+.c-list{display:flex;flex-direction:column;gap:1.1rem}
+.c-item{display:flex;align-items:center;gap:.9rem}
+.c-ico{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:var(--currant-bg);color:var(--currant);display:flex;align-items:center;justify-content:center}
+.c-ico svg{width:18px;height:18px}
+.c-label{font-size:.75rem;font-weight:500;letter-spacing:.06em;display:block;margin-bottom:.1rem}
+.c-val{font-size:.88rem;color:var(--ink2)}
+.c-socials{display:flex;gap:.6rem;margin-top:2rem}
+.c-soc{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--border);color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.c-soc:hover{border-color:var(--currant);color:var(--currant);background:var(--currant-bg)}
+.c-soc svg{width:17px;height:17px}
+.c-free{margin-top:2.4rem;padding:18px 22px;background:var(--cream);border-radius:6px;border-left:3px solid var(--currant);font-size:.84rem;color:var(--ink2);line-height:1.75}
+.c-free strong{color:var(--currant);font-weight:500}
+
+/* ════════════════════════════════════════════
+   BOOKING WIDGET
+════════════════════════════════════════════ */
+.booking-widget{background:#fff;border-radius:4px 24px 4px 24px;padding:44px 48px;box-shadow:0 4px 40px rgba(22,16,13,.07);border:1px solid var(--border);min-height:420px}
+
+/* Progress bar */
+.bk-prog{display:flex;align-items:center;margin-bottom:32px}
+.bk-prog-step{display:flex;align-items:center;gap:.55rem}
+.bk-prog-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:400;color:var(--ink3);flex-shrink:0;transition:all .35s var(--ease)}
+.bk-prog-step.active .bk-prog-dot{border-color:var(--currant);color:var(--currant)}
+.bk-prog-step.done .bk-prog-dot{background:var(--currant);border-color:var(--currant);color:#fff;font-size:.65rem}
+.bk-prog-lbl{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);transition:color .3s;white-space:nowrap}
+.bk-prog-step.active .bk-prog-lbl{color:var(--currant)}
+.bk-prog-step.done .bk-prog-lbl{color:var(--ink2)}
+.bk-prog-line{flex:1;height:1px;background:var(--border);margin:0 .6rem}
+
+/* Step content */
+.bk-step{display:none}
+.bk-step.active{display:block}
+.bk-step-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:1.4rem;color:var(--ink)}
+
+/* Step 1 — service selection */
+.bk-svc-list{border-top:1px solid var(--border)}
+.bk-svc-opt{display:flex;align-items:center;width:100%;padding:13px 0;border-bottom:1px solid var(--border);gap:1rem;cursor:none;position:relative;background:none}
+.bk-svc-opt::before{content:'';position:absolute;left:-48px;right:-48px;top:0;bottom:0;background:var(--cream);opacity:0;transition:opacity .25s;z-index:-1}
+.bk-svc-opt:hover::before,.bk-svc-opt.sel::before{opacity:1}
+.bk-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.bk-svc-opt.sel .bk-radio{border-color:var(--currant);background:var(--currant)}
+.bk-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff;opacity:0;transition:opacity .2s}
+.bk-svc-opt.sel .bk-radio::after{opacity:1}
+.bk-svc-opt-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink);flex:1;text-align:left;transition:color .25s}
+.bk-svc-opt.sel .bk-svc-opt-name,.bk-svc-opt:hover .bk-svc-opt-name{color:var(--currant)}
+.bk-svc-opt-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--currant);font-weight:300;white-space:nowrap}
+.bk-svc-opt-price em{font-style:normal;font-size:.7rem;color:var(--ink3)}
+
+/* Step 2 — calendar */
+.bk-cal{margin-bottom:1.2rem}
+.bk-cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.bk-cal-month{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.02em}
+.bk-cal-nav-btn{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;font-size:1rem;color:var(--ink3);transition:background .2s,color .2s}
+.bk-cal-nav-btn:hover{background:var(--cream);color:var(--ink)}
+.bk-cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:.3rem}
+.bk-cal-wd{text-align:center;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.25rem 0}
+.bk-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.bk-day{aspect-ratio:1;border:none;background:none;font-size:.82rem;font-family:'Inter',sans-serif;font-weight:300;color:var(--ink);display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:background .2s,color .2s}
+.bk-day:not(.unavail):not(.empty):hover{background:var(--currant-bg);color:var(--currant)}
+.bk-day.sel{background:var(--currant);color:#fff}
+.bk-day.today{font-weight:500}
+.bk-day.unavail{color:var(--border);cursor:not-allowed;pointer-events:none}
+.bk-day.empty{pointer-events:none}
+.bk-day.in-range{background:var(--currant-bg);color:var(--currant);border-radius:0}
+.bk-day.range-start{background:var(--currant);color:#fff;border-radius:50% 0 0 50%}
+.bk-day.range-end{background:var(--currant);color:#fff;border-radius:0 50% 50% 0}
+.bk-day.range-start.range-end{border-radius:50%}
+.bk-nights{display:flex;align-items:center;gap:.6rem;margin:.6rem 0;font-size:.84rem;color:var(--ink2)}
+.bk-nights strong{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--currant)}
+
+/* Time slots */
+.bk-times{margin:1rem 0}
+.bk-times-lbl{font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.55rem}
+.bk-time-row{display:flex;flex-wrap:wrap;gap:6px}
+.bk-time-btn{padding:.38rem .7rem;border:1.5px solid var(--border);border-radius:3px;font-size:.8rem;font-family:'Inter',sans-serif;font-weight:300;color:var(--ink2);background:none;cursor:none;transition:all .2s}
+.bk-time-btn:hover{border-color:var(--currant);color:var(--currant)}
+.bk-time-btn.sel{background:var(--currant);border-color:var(--currant);color:#fff}
+
+/* Step 3 — details form */
+.bk-summary-bar{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;margin-bottom:1.2rem;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--ink2);flex-wrap:wrap}
+.bk-summary-bar .hi{font-family:'Cormorant Garamond',serif;color:var(--currant);font-size:.9rem}
+.bk-summary-bar .sep{color:var(--border)}
+.fg{margin-bottom:.9rem}
+.fg label{display:block;font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.4rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.78rem .95rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:300;color:var(--ink);background:#fff;outline:none;transition:border-color .3s;appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--currant)}
+.fg textarea{height:80px;resize:vertical}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* Step 4 — confirmation */
+.bk-confirm-wrap{text-align:center;padding:2rem 0 1rem}
+.bk-confirm-icon{width:52px;height:52px;border-radius:50%;background:var(--currant);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem}
+.bk-confirm-msg{font-size:.88rem;color:var(--ink2);line-height:1.85;max-width:280px;margin:0 auto 2rem}
+
+/* Widget nav buttons */
+.bk-nav{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem}
+.bk-nav.right{justify-content:flex-end}
+.bk-btn-back{font-size:.76rem;color:var(--ink3);letter-spacing:.04em;background:none;cursor:none;transition:color .2s;padding:0}
+.bk-btn-back:hover{color:var(--ink)}
+.bk-btn-next{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.6rem;background:var(--currant);color:#fff;border-radius:3px;font-size:.8rem;font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.05em;cursor:none;transition:background .3s,transform .3s,opacity .3s}
+.bk-btn-next:hover{background:var(--currant2);transform:translateY(-1px)}
+.bk-btn-next:disabled,.bk-btn-next.off{opacity:.35;pointer-events:none;transform:none}
+
+/* ═══ FOOTER ════════════════════════════════ */
+footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
+.foot{display:flex;align-items:center;justify-content:space-between}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(250,247,243,.7)}
+.foot-logo em{font-style:normal;color:rgba(212,160,185,.7)}
+.foot-copy{font-size:.75rem}
+.foot-links{display:flex;gap:1.6rem;list-style:none;font-size:.75rem}
+.foot-links a:hover{color:rgba(250,247,243,.7);transition:color .3s}
+
+/* ═══ RESPONSIVE ════════════════════════════ */
+@media(max-width:960px){
+  .w{padding:0 24px}
+  #about,#uslugi,#galeria,#obszar,#kontakt{padding:96px 0}
+  .about-grid{grid-template-columns:1fr;gap:60px}
+  .about-img-col{max-width:400px;margin:0 auto}
+  .uslugi-head{grid-template-columns:1fr}
+  .area-grid{grid-template-columns:1fr}
+  .map-frame{aspect-ratio:16/9}
+  .kontakt-grid{grid-template-columns:1fr}
+  .gal-head,.gal-strip{padding:0 24px}
+  .nav-links>li:not(:last-child){display:none}
+  .booking-widget{padding:32px 28px}
+  .bk-prog-lbl{display:none}
+}
+@media(max-width:640px){
+  .hero-meta{flex-direction:column;gap:1.4rem}
+  .svc-row{grid-template-columns:40px 1fr auto;gap:1rem}
+  .svc-arrow{display:none}
+  .f2{grid-template-columns:1fr}
+  .foot{flex-direction:column;gap:1rem;text-align:center}
+  .hero-watermark{display:none}
+  .booking-widget{padding:24px 20px}
+}
+  </style>
+</head>
+<body>
+
+<div id="cd"></div>
+<div id="cr"></div>
+
+<!-- ─── NAV ──────────────────────────────── -->
+<nav id="nav">
+  <div class="w nav-in">
+    <a href="#" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="7.5"  r="4"   fill="rgba(212,160,185,.85)"/>
+        <circle cx="6.5" cy="15.5" r="3.5" fill="rgba(212,160,185,.7)"/>
+        <circle cx="17.5" cy="15.5" r="3.5" fill="rgba(212,160,185,.7)"/>
+        <circle cx="12"  cy="21"  r="2.5" fill="rgba(212,160,185,.5)"/>
+      </svg>
+      Petsitter&nbsp;<em>Porzeczka</em>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">O&nbsp;mnie</a></li>
+      <li><a href="#uslugi">Usługi</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#obszar">Obszar</a></li>
+      <li><a href="#kontakt" class="nav-cta">Rezerwacja</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────── -->
+<section id="hero">
+  <div class="hero-vid">
+    <video autoplay muted loop playsinline><source src="herovid.mp4" type="video/mp4"></video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-watermark" aria-hidden="true">P</div>
+  <div class="w">
+    <div class="hero-body">
+      <div class="hero-kicker">Profesjonalna opieka zwierzęca · Warszawa</div>
+      <h1 class="hero-h1">
+        <span class="line-wrap"><span class="line-inner" style="transition:transform .9s .3s var(--ease)">Twój pupil</span></span>
+        <span class="line-wrap"><span class="line-inner" style="transition:transform .9s .45s var(--ease)">w <em>dobrych</em></span></span>
+        <span class="line-wrap"><span class="line-inner" style="transition:transform .9s .6s var(--ease)"><em>rękach</em></span></span>
+      </h1>
+      <div class="hero-meta">
+        <p class="hero-sub">Indywidualne podejście, pełne zaangażowanie i miłość do zwierząt – to fundament każdej opieki.</p>
+        <div class="hero-btns">
+          <a href="#kontakt" class="btn btn-ink">Zarezerwuj <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
+          <a href="#uslugi" class="btn btn-ghost-light">Usługi &amp; Cennik</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-line-indicator">Scroll</div>
+</section>
+
+<!-- ─── MARQUEE ───────────────────────────── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Opieka z <em>miłością</em></span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Warszawa</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span><em>Profesjonalna</em> petsitterka</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Porzeczka</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Twój pupil w dobrych rękach</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span><em>Spokój</em> i zaufanie</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Opieka z <em>miłością</em></span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Warszawa</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span><em>Profesjonalna</em> petsitterka</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Porzeczka</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span>Twój pupil w dobrych rękach</span><span class="marquee-sep">·</span></div>
+    <div class="marquee-item"><span><em>Spokój</em> i zaufanie</span><span class="marquee-sep">·</span></div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─────────────────────────────── -->
+<section id="about">
+  <div class="w">
+    <div class="about-grid">
+      <div class="about-img-col rv">
+        <div class="about-img-frame"><img src="about.jpg" alt="Magda – Petsitter Porzeczka" loading="lazy"></div>
+        <div class="about-caption"><strong>5+</strong><span>lat doświadczenia</span></div>
+      </div>
+      <div class="about-text-col">
+        <p class="label about-label rv">O mnie</p>
+        <h2 class="about-h2">
+          <span class="line-wrap"><span class="line-inner rv">Cześć,</span></span>
+          <span class="line-wrap"><span class="line-inner rv d1">jestem <em>Magda</em></span></span>
+        </h2>
+        <blockquote class="about-pull rv d1">„Każde zwierzę zasługuje na opiekę, której naprawdę potrzebuje – pełną uwagi, spokoju i szacunku."</blockquote>
+        <div class="about-body">
+          <p class="rv d2">Jestem certyfikowaną petsitterką z Warszawy, z prawdziwą pasją do czworonogów. Od ponad pięciu lat opiekuję się psami i kotami, traktując każdego podopiecznego jak własnego zwierzaka.</p>
+          <p class="rv d2">Moim priorytetem jest minimalizowanie stresu i zapewnienie poczucia bezpieczeństwa – zarówno zwierzętom, jak i ich właścicielom. Regularnie wysyłam relacje ze zdjęciami, żebyś zawsze wiedział, że Twój pupil jest zadbany.</p>
+        </div>
+        <div class="about-sig rv d3">Magda</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────── -->
+<section id="uslugi">
+  <div class="w">
+    <div class="uslugi-head">
+      <div>
+        <p class="label rv" style="margin-bottom:1rem">Oferta</p>
+        <h2 class="uslugi-h2">
+          <span class="line-wrap"><span class="line-inner rv">Usługi</span></span>
+          <span class="line-wrap"><span class="line-inner rv d1"><em>&amp; Cennik</em></span></span>
+        </h2>
+      </div>
+      <p class="uslugi-sub rv d1">Każda usługa jest dopasowywana indywidualnie. Zaczynamy od bezpłatnego spotkania zapoznawczego.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row rv">
+        <span class="svc-n">01</span>
+        <div class="svc-info"><h3>Spacer</h3><p class="svc-desc">30–45 min · 1 pies 60 zł · 2 psy 80 zł · +20 zł w święta.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 60</span><span class="svc-price-unit">zł&nbsp;/&nbsp;spacer</span></div>
+        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+      </div>
+      <div class="svc-row rv d1">
+        <span class="svc-n">02</span>
+        <div class="svc-info"><h3>Wizyty godzinowe</h3><p class="svc-desc">Pierwsza godzina 50 zł, każda kolejna +15 zł.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 50</span><span class="svc-price-unit">zł&nbsp;/&nbsp;godz.</span></div>
+        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+      </div>
+      <div class="svc-row rv d2">
+        <span class="svc-n">03</span>
+        <div class="svc-info"><h3>Wizyta u kotów</h3><p class="svc-desc">Pon–Pt 50 zł · Sb/Nd 60 zł · Święta 75 zł.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 50</span><span class="svc-price-unit">zł&nbsp;/&nbsp;wizyta</span></div>
+        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+      </div>
+      <div class="svc-row rv">
+        <span class="svc-n">04</span>
+        <div class="svc-info"><h3>Opieka w domu klienta</h3><p class="svc-desc">Przyjeżdżam do Twojego domu. Cena zależy od liczby zwierząt i zakresu obowiązków.</p></div>
+        <div class="svc-price"><span class="svc-price-num svc-rng">150–300</span><span class="svc-price-unit">zł&nbsp;/&nbsp;dzień</span></div>
+        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+      </div>
+      <div class="svc-row rv d1">
+        <span class="svc-n">05</span>
+        <div class="svc-info"><h3>Nocleg u petsittera</h3><p class="svc-desc">Twój pupil spędza noc u mnie w domu – bezpiecznie, ciepło, z pełną opieką. Cena zależy od zwierzęcia.</p></div>
+        <div class="svc-price"><span class="svc-price-num svc-rng">100–200</span><span class="svc-price-unit">zł&nbsp;/&nbsp;noc</span></div>
+        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+      </div>
+      <div class="svc-row rv d2">
+        <span class="svc-n">06</span>
+        <div class="svc-info"><h3>Zwierzęta egzotyczne</h3><p class="svc-desc">Papugi, gryzonie i inne egzotyki – z pełną troską i znajomością gatunku.</p></div>
+        <div class="svc-price"><span class="svc-price-num">80</span><span class="svc-price-unit">zł&nbsp;/&nbsp;wizyta</span></div>
+        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+      </div>
+    </div>
+    <div class="svc-footer rv">
+      <p class="svc-note"><strong>Pierwsze spotkanie bezpłatne.</strong> Zawsze zaczynamy od wizyty zapoznawczej – bez zobowiązań.</p>
+      <a href="#kontakt" class="btn btn-ghost-dark">Umów spotkanie <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUOTE ──────────────────────────────── -->
+<section id="quote">
+  <div class="quote-deco" aria-hidden="true">"</div>
+  <div class="w">
+    <div class="quote-inner">
+      <p class="quote-text rv">„Gdy wychodzisz, Twój pupil powinien czuć się zaopiekowany, kochany i bezpieczny –<br>dokładnie tak samo, jak kiedy jesteś obok."</p>
+      <div class="quote-author rv d1">Magda</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ───────────────────────────── -->
+<section id="galeria">
+  <div class="gal-head">
+    <div>
+      <p class="label rv" style="margin-bottom:1rem">Galeria</p>
+      <h2 class="gal-h2"><span class="line-wrap"><span class="line-inner rv">Moi</span></span><span class="line-wrap"><span class="line-inner rv d1"><em>podopieczni</em></span></span></h2>
+    </div>
+    <div class="gal-hint rv">przeciągnij aby eksplorować</div>
+  </div>
+  <div class="gal-strip-wrap rv" id="gstrip-wrap">
+    <div class="gal-strip" id="gstrip">
+      <div class="gi"><img src="klienci/Artur.jpg" alt="Artur" loading="lazy"><div class="gi-overlay"><span class="gi-name">Artur</span></div></div>
+      <div class="gi is-vid"><div class="vid-thumb"></div><video muted loop playsinline preload="metadata"><source src="1000006961.mp4" type="video/mp4"></video><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="gi-overlay"></div></div>
+      <div class="gi"><img src="klienci/Blade%20i%20Nala.jpg" alt="Blade i Nala" loading="lazy"><div class="gi-overlay"><span class="gi-name">Blade &amp; Nala</span></div></div>
+      <div class="gi"><img src="klienci/Buzka.jpg" alt="Buzka" loading="lazy"><div class="gi-overlay"><span class="gi-name">Buzka</span></div></div>
+      <div class="gi"><img src="klienci/Dora.jpg" alt="Dora" loading="lazy"><div class="gi-overlay"><span class="gi-name">Dora</span></div></div>
+      <div class="gi"><img src="klienci/Elmo.jpg" alt="Elmo" loading="lazy"><div class="gi-overlay"><span class="gi-name">Elmo</span></div></div>
+      <div class="gi is-vid"><div class="vid-thumb"></div><video muted loop playsinline preload="metadata"><source src="1000006971.mp4" type="video/mp4"></video><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="gi-overlay"></div></div>
+      <div class="gi"><img src="klienci/Galip.jpg" alt="Galip" loading="lazy"><div class="gi-overlay"><span class="gi-name">Galip</span></div></div>
+      <div class="gi"><img src="klienci/Holly.jpeg" alt="Holly" loading="lazy"><div class="gi-overlay"><span class="gi-name">Holly</span></div></div>
+      <div class="gi"><img src="klienci/Kicia.jpg" alt="Kicia" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kicia</span></div></div>
+      <div class="gi"><img src="klienci/Kofi.jpeg" alt="Kofi" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kofi</span></div></div>
+      <div class="gi is-vid"><div class="vid-thumb"></div><video muted loop playsinline preload="metadata"><source src="1000006954.mp4" type="video/mp4"></video><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><div class="gi-overlay"></div></div>
+      <div class="gi"><img src="klienci/Kreska.png" alt="Kreska" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kreska</span></div></div>
+      <div class="gi"><img src="klienci/Kronos.jpg" alt="Kronos" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kronos</span></div></div>
+      <div class="gi"><img src="klienci/Lucky.jpg" alt="Lucky" loading="lazy"><div class="gi-overlay"><span class="gi-name">Lucky</span></div></div>
+      <div class="gi"><img src="klienci/Mocha%20i%20Precel.jpg" alt="Mocha i Precel" loading="lazy"><div class="gi-overlay"><span class="gi-name">Mocha &amp; Precel</span></div></div>
+      <div class="gi"><img src="klienci/Molly%20i%20Badi.jpg" alt="Molly i Badi" loading="lazy"><div class="gi-overlay"><span class="gi-name">Molly &amp; Badi</span></div></div>
+      <div class="gi"><img src="klienci/Pilot.jpg" alt="Pilot" loading="lazy"><div class="gi-overlay"><span class="gi-name">Pilot</span></div></div>
+      <div class="gi"><img src="klienci/Precel.jpg" alt="Precel" loading="lazy"><div class="gi-overlay"><span class="gi-name">Precel</span></div></div>
+      <div class="gi"><img src="klienci/Ruta.jpg" alt="Ruta" loading="lazy"><div class="gi-overlay"><span class="gi-name">Ruta</span></div></div>
+      <div class="gi"><img src="klienci/Dora%20i.jpg" alt="Dora" loading="lazy"><div class="gi-overlay"><span class="gi-name">Dora</span></div></div>
+      <div class="gi"><img src="hero.png" alt="" loading="lazy"><div class="gi-overlay"><span class="gi-name">Spokój</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AREA ──────────────────────────────── -->
+<section id="obszar">
+  <div class="w">
+    <div class="area-grid">
+      <div>
+        <p class="area-label rv">Obszar działania</p>
+        <h2 class="area-h2"><span class="line-wrap"><span class="line-inner rv">Warszawa</span></span><span class="line-wrap"><span class="line-inner rv d1"><em>i okolice</em></span></span></h2>
+        <p class="area-p rv d1">Działam przede wszystkim na terenie Warszawy. Przy dłuższych zleceniach możliwa jest obsługa całej aglomeracji.</p>
+        <p class="area-p rv d2">Nie jesteś pewien czy Twoja lokalizacja wchodzi w zakres obsługi? Napisz – chętnie sprawdzę.</p>
+        <!-- No pills — plain text -->
+        <p class="area-districts rv d2">Wola · Ochota · Śródmieście · Mokotów · Ursynów · Żoliborz · Bemowo · Praga Południe · Praga Północ</p>
+        <div class="rv d3" style="margin-top:2.4rem"><a href="#kontakt" class="btn btn-ghost-light">Sprawdź dostępność</a></div>
+      </div>
+      <div class="map-frame rv d1">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=20.85%2C52.17%2C21.13%2C52.33&amp;layer=mapnik" title="Mapa" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────── -->
+<section id="kontakt">
+  <div class="w">
+    <p class="label rv" style="margin-bottom:1rem">Kontakt &amp; Rezerwacja</p>
+    <div class="kontakt-grid">
+
+      <div class="kontakt-info">
+        <h2><span class="line-wrap"><span class="line-inner rv">Zarezerwuj</span></span><span class="line-wrap"><span class="line-inner rv d1"><em>opiekę</em></span></span></h2>
+        <p class="rv d1" style="margin-top:1rem">Wypełnij formularz lub napisz bezpośrednio. Staram się odpowiadać w ciągu kilku godzin.</p>
+        <div class="c-list">
+          <div class="c-item rv d1">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112 18.85a19.5 19.5 0 01-5-5A19.79 19.79 0 013.08 5.18 2 2 0 015.07 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 10a16 16 0 006.79 6.79l.41-.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><span class="c-label">Telefon</span><span class="c-val">+48 XXX XXX XXX</span></div>
+          </div>
+          <div class="c-item rv d2">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><span class="c-label">E-mail</span><span class="c-val">kontakt@porzeczkapet.pl</span></div>
+          </div>
+          <div class="c-item rv d3">
+            <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><span class="c-label">Lokalizacja</span><span class="c-val">Warszawa i aglomeracja</span></div>
+          </div>
+        </div>
+        <div class="c-socials rv d2">
+          <a href="#" class="c-soc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="c-soc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="c-soc" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 100 8 4 4 0 000-8zm6-9s1 1 3 1v3s-2 0-3-1v7a7 7 0 11-7-7v3a4 4 0 104 4V3h3z"/></svg></a>
+        </div>
+        <div class="c-free rv d3"><strong>Pierwsze spotkanie bezpłatne.</strong><br>Zawsze zaczynamy od wizyty zapoznawczej – poznaję Twojego pupila i sprawdzamy, czy będziemy dobrym duetem. Bez zobowiązań.</div>
+      </div>
+
+      <!-- ── BOOKING WIDGET ─────────────────── -->
+      <div class="booking-widget rv d1" id="bw">
+        <!-- rendered by JS -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────── -->
+<footer>
+  <div class="w foot">
+    <div class="foot-logo">Petsitter <em>Porzeczka</em></div>
+    <p class="foot-copy">© 2025 Petsitter Porzeczka · Warszawa</p>
+    <ul class="foot-links"><li><a href="#">Polityka prywatności</a></li><li><a href="#">Regulamin</a></li></ul>
+  </div>
+</footer>
+
+<script>
+/* ── Cursor ──────────────────────────────── */
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.svc-row,.gi,.c-soc,.bk-svc-opt,.bk-day,.bk-time-btn,.bk-cal-nav-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+const heroEl=document.getElementById('hero');
+heroEl.addEventListener('mouseenter',()=>document.body.classList.add('hero-zone'));
+heroEl.addEventListener('mouseleave',()=>document.body.classList.remove('hero-zone'));
+
+/* ── Nav ─────────────────────────────────── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60),{passive:true});
+
+/* ── Hero line reveal ────────────────────── */
+document.querySelectorAll('#hero .line-inner').forEach(el=>el.classList.add('in'));
+
+/* ── Scroll reveal ───────────────────────── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.line-inner').forEach(li=>li.classList.add('in'));
+    if(e.target.classList.contains('rv'))e.target.classList.add('in');
+    io.unobserve(e.target);
+  });
+},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.line-wrap').forEach(el=>io.observe(el));
+
+/* ── Gallery drag + wheel ────────────────── */
+const gw=document.getElementById('gstrip-wrap');
+let gDown=false,gStartX,gScrollL;
+gw.addEventListener('mousedown',e=>{gDown=true;gw.classList.add('dragging');gStartX=e.pageX-gw.offsetLeft;gScrollL=gw.scrollLeft;});
+gw.addEventListener('mouseleave',()=>{gDown=false;gw.classList.remove('dragging');});
+gw.addEventListener('mouseup',()=>{gDown=false;gw.classList.remove('dragging');});
+gw.addEventListener('mousemove',e=>{if(!gDown)return;e.preventDefault();gw.scrollLeft=gScrollL-(e.pageX-gw.offsetLeft-gStartX)*1.4;});
+gw.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();gw.scrollLeft+=e.deltaY*1.2;}},{passive:false});
+
+/* ── Gallery videos on hover ─────────────── */
+document.querySelectorAll('.gi.is-vid').forEach(item=>{
+  const v=item.querySelector('video');
+  item.addEventListener('mouseenter',()=>v.play());
+  item.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0;});
+});
+
+/* ── Smooth anchor ───────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* ════════════════════════════════════════════
+   BOOKING WIDGET
+════════════════════════════════════════════ */
+const BK = {
+  step: 1,
+  svc: null,
+  date: null,
+  dateEnd: null,
+  time: null,
+  calY: new Date().getFullYear(),
+  calM: new Date().getMonth(),
+
+  MONTHS: ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'],
+  MONTHS_GEN: ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'],
+  WDAYS: ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'],
+  SVCS: [
+    {id:'spacer',     name:'Spacer (30–45 min)',     price:'od 60',   unit:'/ spacer', range:false},
+    {id:'godzinowe',  name:'Wizyty godzinowe',       price:'od 50',   unit:'/ godz.',  range:false},
+    {id:'koty',       name:'Wizyta u kotów',          price:'od 50',   unit:'/ wizyta', range:false},
+    {id:'dom',        name:'Opieka w domu klienta',  price:'150–300', unit:'/ dzień',  range:true},
+    {id:'nocleg',     name:'Nocleg u petsittera',    price:'100–200', unit:'/ noc',    range:true},
+    {id:'egzotyczne', name:'Zwierzęta egzotyczne',   price:'80',      unit:'zł',       range:false},
+  ],
+  TIMES: ['8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'],
+
+  el() { return document.getElementById('bw'); },
+  svcObj() { return this.SVCS.find(s=>s.id===this.svc); },
+  isRange() { return !!this.svcObj()?.range; },
+
+  fmt(d) {
+    if(!d) return '';
+    return `${d.getDate()} ${this.MONTHS_GEN[d.getMonth()]}`;
+  },
+
+  nights() {
+    if(!this.date||!this.dateEnd) return 0;
+    return Math.round((this.dateEnd-this.date)/86400000);
+  },
+
+  nightLabel(n) {
+    const unitN = this.svc==='nocleg' ? (n===1?'noc':n<5?'noce':'nocy') : (n===1?'dzień':'dni');
+    return `${n} ${unitN}`;
+  },
+
+  render() { this.el().innerHTML=this.tpl(); this.bind(); },
+
+  progress() {
+    const labels=['Usługa','Termin','Dane','Gotowe'];
+    return `<div class="bk-prog">${labels.map((l,i)=>{
+      const n=i+1,cls=n===this.step?'active':n<this.step?'done':'';
+      return `${i>0?'<div class="bk-prog-line"></div>':''}
+        <div class="bk-prog-step ${cls}">
+          <div class="bk-prog-dot">${n<this.step?'✓':n}</div>
+          <span class="bk-prog-lbl">${l}</span>
+        </div>`;
+    }).join('')}</div>`;
+  },
+
+  tpl() {
+    if(this.step===1) return this.progress()+this.step1();
+    if(this.step===2) return this.progress()+this.step2();
+    if(this.step===3) return this.progress()+this.step3();
+    return this.progress()+this.step4();
+  },
+
+  step1() {
+    const rows=this.SVCS.map(s=>`
+      <button class="bk-svc-opt${this.svc===s.id?' sel':''}" data-svc="${s.id}" type="button">
+        <div class="bk-radio"></div>
+        <span class="bk-svc-opt-name">${s.name}</span>
+        <span class="bk-svc-opt-price">${s.price} <em>${s.unit}</em></span>
+      </button>`).join('');
+    return `<h4 class="bk-step-title">Wybierz usługę</h4>
+      <div class="bk-svc-list">${rows}</div>
+      <div class="bk-nav right">
+        <button class="bk-btn-next${this.svc?'':' off'}" id="bk-n1" type="button">Dalej →</button>
+      </div>`;
+  },
+
+  step2() {
+    const range=this.isRange();
+    const canNext=range?(this.date&&this.dateEnd):(this.date&&this.time);
+    let extra='';
+    if(range&&this.date&&this.dateEnd){
+      const n=this.nights();
+      extra=`<div class="bk-nights">Wybrano: <strong>${this.nightLabel(n)}</strong> &nbsp;·&nbsp; ${this.fmt(this.date)} – ${this.fmt(this.dateEnd)}</div>`;
+    } else if(range&&this.date&&!this.dateEnd){
+      extra=`<div class="bk-nights" style="color:var(--ink3)">Wybierz datę zakończenia</div>`;
+    }
+    return `<h4 class="bk-step-title">${range?'Wybierz daty pobytu':'Wybierz termin'}</h4>
+      ${this.calendar()}
+      ${range?extra:(this.date?this.times():'')}
+      <div class="bk-nav">
+        <button class="bk-btn-back" id="bk-b2" type="button">← Wstecz</button>
+        <button class="bk-btn-next${canNext?'':' off'}" id="bk-n2" type="button">Dalej →</button>
+      </div>`;
+  },
+
+  calendar() {
+    const today=new Date(),y=this.calY,m=this.calM;
+    const todayMid=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    const firstDow=(new Date(y,m,1).getDay()+6)%7;
+    const daysInMonth=new Date(y,m+1,0).getDate();
+    const range=this.isRange();
+    let cells='';
+    for(let i=0;i<firstDow;i++) cells+=`<div class="bk-day empty"></div>`;
+    for(let d=1;d<=daysInMonth;d++){
+      const dt=new Date(y,m,d);
+      const past=dt<todayMid, sun=dt.getDay()===0;
+      let cls=[];
+      if(past||sun) { cls.push('unavail'); }
+      else if(range){
+        const isS=this.date&&dt.getTime()===this.date.getTime();
+        const isE=this.dateEnd&&dt.getTime()===this.dateEnd.getTime();
+        const inR=this.date&&this.dateEnd&&dt>this.date&&dt<this.dateEnd;
+        if(isS) cls.push('range-start');
+        if(isE) cls.push('range-end');
+        if(inR) cls.push('in-range');
+      } else {
+        if(this.date&&this.date.getDate()===d&&this.date.getMonth()===m&&this.date.getFullYear()===y) cls.push('sel');
+      }
+      if(today.getDate()===d&&today.getMonth()===m&&today.getFullYear()===y) cls.push('today');
+      cells+=`<button class="bk-day${cls.length?' '+cls.join(' '):''}" data-d="${d}" type="button"${past||sun?' disabled':''}>${d}</button>`;
+    }
+    return `<div class="bk-cal">
+      <div class="bk-cal-head">
+        <button class="bk-cal-nav-btn" data-dir="-1" type="button">‹</button>
+        <span class="bk-cal-month serif">${this.MONTHS[m]} ${y}</span>
+        <button class="bk-cal-nav-btn" data-dir="1" type="button">›</button>
+      </div>
+      <div class="bk-cal-weekdays">${this.WDAYS.map(d=>`<div class="bk-cal-wd">${d}</div>`).join('')}</div>
+      <div class="bk-cal-grid">${cells}</div>
+    </div>`;
+  },
+
+  times() {
+    const slots=this.TIMES.map(t=>`
+      <button class="bk-time-btn${this.time===t?' sel':''}" data-t="${t}" type="button">${t}</button>`).join('');
+    return `<div class="bk-times"><p class="bk-times-lbl">Godzina</p><div class="bk-time-row">${slots}</div></div>`;
+  },
+
+  step3() {
+    const s=this.svcObj(), range=this.isRange();
+    const dateStr=range?`${this.fmt(this.date)} – ${this.fmt(this.dateEnd)}`:`${this.fmt(this.date)}`;
+    return `<h4 class="bk-step-title">Twoje dane</h4>
+      <div class="bk-summary-bar">
+        <span class="hi">${s?.name}</span><span class="sep">·</span>
+        <span>${dateStr}</span>
+        ${!range&&this.time?`<span class="sep">·</span><span>${this.time}</span>`:''}
+      </div>
+      <div class="f2">
+        <div class="fg"><label>Imię i nazwisko</label><input id="bk-nm" type="text" placeholder="Jan Kowalski" required></div>
+        <div class="fg"><label>Telefon</label><input id="bk-tel" type="tel" placeholder="+48 000 000 000"></div>
+      </div>
+      <div class="fg"><label>E-mail</label><input id="bk-em" type="email" placeholder="twoj@email.pl" required></div>
+      <div class="fg"><label>Opowiedz mi o swoim pupilu</label><textarea id="bk-pet" placeholder="Imię, rasa, wiek, charakter…"></textarea></div>
+      <div class="bk-nav">
+        <button class="bk-btn-back" id="bk-b3" type="button">← Wstecz</button>
+        <button class="bk-btn-next" id="bk-n3" type="button">Wyślij rezerwację →</button>
+      </div>`;
+  },
+
+  step4() {
+    const s=this.svcObj(), range=this.isRange();
+    const dateStr=range?`${this.fmt(this.date)} – ${this.fmt(this.dateEnd)} (${this.nightLabel(this.nights())})`:`${this.fmt(this.date)} · ${this.time}`;
+    return `<div class="bk-confirm-wrap">
+        <div class="bk-confirm-icon">✓</div>
+        <h4 class="bk-step-title serif" style="text-align:center">Rezerwacja wysłana!</h4>
+        <p class="bk-confirm-msg">Dziękuję za zaufanie. Skontaktuję się z Tobą wkrótce, aby potwierdzić szczegóły.<br><br>
+          <strong style="color:var(--currant)">${s?.name}<br>${dateStr}</strong></p>
+        <button class="bk-btn-next" onclick="BK.reset()" type="button">Nowa rezerwacja</button>
+      </div>`;
+  },
+
+  bind() {
+    this.el().querySelectorAll('.bk-svc-opt').forEach(b=>{
+      b.addEventListener('click',()=>{this.svc=b.dataset.svc;this.date=null;this.dateEnd=null;this.time=null;this.render();});
+    });
+    this.el().querySelectorAll('.bk-cal-nav-btn').forEach(b=>{
+      b.addEventListener('click',()=>{
+        this.calM+=parseInt(b.dataset.dir);
+        if(this.calM>11){this.calM=0;this.calY++;}
+        if(this.calM<0){this.calM=11;this.calY--;}
+        this.render();
+      });
+    });
+    this.el().querySelectorAll('.bk-day:not(.unavail)').forEach(b=>{
+      b.addEventListener('click',()=>{
+        const d=new Date(this.calY,this.calM,parseInt(b.dataset.d));
+        if(this.isRange()){
+          if(!this.date||(this.date&&this.dateEnd)){
+            this.date=d; this.dateEnd=null;
+          } else {
+            if(d>this.date){ this.dateEnd=d; }
+            else if(d.getTime()===this.date.getTime()){ this.date=null; }
+            else { this.date=d; this.dateEnd=null; }
+          }
+        } else {
+          this.date=d; this.time=null;
+        }
+        this.render();
+      });
+    });
+    this.el().querySelectorAll('.bk-time-btn').forEach(b=>{
+      b.addEventListener('click',()=>{this.time=b.dataset.t;this.render();});
+    });
+    const n1=document.getElementById('bk-n1'),n2=document.getElementById('bk-n2'),n3=document.getElementById('bk-n3');
+    const b2=document.getElementById('bk-b2'),b3=document.getElementById('bk-b3');
+    if(n1) n1.addEventListener('click',()=>{this.step=2;this.render();});
+    if(n2) n2.addEventListener('click',()=>{this.step=3;this.render();});
+    if(n3) n3.addEventListener('click',()=>{this.step=4;this.render();});
+    if(b2) b2.addEventListener('click',()=>{this.step=1;this.render();});
+    if(b3) b3.addEventListener('click',()=>{this.step=2;this.render();});
+    this.el().querySelectorAll('button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+      el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+    });
+  },
+
+  reset(){ this.step=1;this.svc=null;this.date=null;this.dateEnd=null;this.time=null;this.render(); }
+};
+
+BK.render();
+</script>
+</body>
+</html>
