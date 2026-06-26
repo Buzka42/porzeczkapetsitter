@@ -38,6 +38,9 @@ body.hov #cd{transform:translate(-50%,-50%) scale(1.6)}
 body.hero-zone #cd{background:rgba(255,255,255,.9)}
 body.hero-zone #cr{border-color:rgba(255,255,255,.5)}
 body.hero-zone.hov #cr{border-color:rgba(255,255,255,.85)}
+body.quote-zone #cd{background:rgba(255,255,255,.9)}
+body.quote-zone #cr{border-color:rgba(255,255,255,.5)}
+body.quote-zone.hov #cr{border-color:rgba(255,255,255,.85)}
 
 /* ═══ TYPE ══════════════════════════════════ */
 .serif{font-family:'Cormorant Garamond',serif}
@@ -74,8 +77,8 @@ body.hero-zone.hov #cr{border-color:rgba(255,255,255,.85)}
 nav{position:fixed;inset:0 0 auto 0;z-index:200;padding:28px 0;transition:padding .5s var(--ease),background .5s,box-shadow .5s}
 nav.sc{padding:14px 0;background:rgba(247,243,238,.93);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
 .nav-in{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;display:flex;align-items:center;gap:.55rem;color:#fff;transition:color .5s}
-.logo em{font-style:normal;color:rgba(212,160,185,.9)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;font-style:italic;display:flex;align-items:center;color:#fff;transition:color .5s;letter-spacing:.01em}
+.logo em{font-style:italic;color:rgba(212,160,185,.9)}
 nav.sc .logo{color:var(--ink)}
 nav.sc .logo em{color:var(--currant)}
 .nav-links{display:flex;align-items:center;gap:2.8rem;list-style:none}
@@ -341,6 +344,9 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
 }
 @media(max-width:640px){
   .hero-meta{flex-direction:column;gap:1.4rem}
+  .hero-btns{flex-wrap:wrap;gap:.75rem}
+  .hero-line-indicator{display:none}
+  #hero{height:100svh}
   .svc-row{grid-template-columns:40px 1fr auto;gap:1rem}
   .svc-arrow{display:none}
   .f2{grid-template-columns:1fr}
@@ -358,15 +364,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
 <!-- ─── NAV ──────────────────────────────── -->
 <nav id="nav">
   <div class="w nav-in">
-    <a href="#" class="logo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="7.5"  r="4"   fill="rgba(212,160,185,.85)"/>
-        <circle cx="6.5" cy="15.5" r="3.5" fill="rgba(212,160,185,.7)"/>
-        <circle cx="17.5" cy="15.5" r="3.5" fill="rgba(212,160,185,.7)"/>
-        <circle cx="12"  cy="21"  r="2.5" fill="rgba(212,160,185,.5)"/>
-      </svg>
-      Petsitter&nbsp;<em>Porzeczka</em>
-    </a>
+    <a href="#" class="logo">Petsitter<em>Porzeczka</em></a>
     <ul class="nav-links">
       <li><a href="#about">O&nbsp;mnie</a></li>
       <li><a href="#uslugi">Usługi</a></li>
@@ -429,7 +427,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
     <div class="about-grid">
       <div class="about-img-col rv">
         <div class="about-img-frame"><img src="about.jpg" alt="Magda – Petsitter Porzeczka" loading="lazy"></div>
-        <div class="about-caption"><strong>5+</strong><span>lat doświadczenia</span></div>
+        <div class="about-caption"><strong>15+</strong><span>lat doświadczenia</span></div>
       </div>
       <div class="about-text-col">
         <p class="label about-label rv">O mnie</p>
@@ -439,7 +437,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
         </h2>
         <blockquote class="about-pull rv d1">„Każde zwierzę zasługuje na opiekę, której naprawdę potrzebuje – pełną uwagi, spokoju i szacunku."</blockquote>
         <div class="about-body">
-          <p class="rv d2">Jestem certyfikowaną petsitterką z Warszawy, z prawdziwą pasją do czworonogów. Od ponad pięciu lat opiekuję się psami i kotami, traktując każdego podopiecznego jak własnego zwierzaka.</p>
+          <p class="rv d2">Jestem certyfikowaną petsitterką z Warszawy, z prawdziwą pasją do czworonogów. Od ponad piętnastu lat opiekuję się psami i kotami, traktując każdego podopiecznego jak własnego zwierzaka.</p>
           <p class="rv d2">Moim priorytetem jest minimalizowanie stresu i zapewnienie poczucia bezpieczeństwa – zarówno zwierzętom, jak i ich właścicielom. Regularnie wysyłam relacje ze zdjęciami, żebyś zawsze wiedział, że Twój pupil jest zadbany.</p>
         </div>
         <div class="about-sig rv d3">Magda</div>
@@ -586,7 +584,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
         <div class="c-list">
           <div class="c-item rv d1">
             <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112 18.85a19.5 19.5 0 01-5-5A19.79 19.79 0 013.08 5.18 2 2 0 015.07 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 10a16 16 0 006.79 6.79l.41-.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div><span class="c-label">Telefon</span><span class="c-val">+48 XXX XXX XXX</span></div>
+            <div><span class="c-label">Telefon</span><span class="c-val">+48 500 001 042</span></div>
           </div>
           <div class="c-item rv d2">
             <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -598,9 +596,8 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:40px 0}
           </div>
         </div>
         <div class="c-socials rv d2">
-          <a href="#" class="c-soc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="#" class="c-soc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" class="c-soc" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 100 8 4 4 0 000-8zm6-9s1 1 3 1v3s-2 0-3-1v7a7 7 0 11-7-7v3a4 4 0 104 4V3h3z"/></svg></a>
+          <a href="https://www.instagram.com/petsitter_porzeczka/" class="c-soc" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61575881047110" class="c-soc" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
         </div>
         <div class="c-free rv d3"><strong>Pierwsze spotkanie bezpłatne.</strong><br>Zawsze zaczynamy od wizyty zapoznawczej – poznaję Twojego pupila i sprawdzamy, czy będziemy dobrym duetem. Bez zobowiązań.</div>
       </div>
@@ -636,6 +633,9 @@ document.querySelectorAll('a,button,.svc-row,.gi,.c-soc,.bk-svc-opt,.bk-day,.bk-
 const heroEl=document.getElementById('hero');
 heroEl.addEventListener('mouseenter',()=>document.body.classList.add('hero-zone'));
 heroEl.addEventListener('mouseleave',()=>document.body.classList.remove('hero-zone'));
+const quoteEl=document.getElementById('quote');
+quoteEl.addEventListener('mouseenter',()=>document.body.classList.add('quote-zone'));
+quoteEl.addEventListener('mouseleave',()=>document.body.classList.remove('quote-zone'));
 
 /* ── Nav ─────────────────────────────────── */
 const nav=document.getElementById('nav');
@@ -682,6 +682,24 @@ gw.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.prev
     });
   },{root:gw,threshold:0.55});
   document.querySelectorAll('.gi.is-vid').forEach(el=>obs.observe(el));
+})();
+
+/* ── Gallery auto-scroll ─────────────────── */
+(()=>{
+  const gw=document.getElementById('gstrip-wrap');
+  let auto=true;
+  function tick(){
+    if(auto){
+      gw.scrollLeft+=0.5;
+      if(gw.scrollLeft>=gw.scrollWidth-gw.clientWidth)gw.scrollLeft=0;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  gw.addEventListener('mouseenter',()=>auto=false);
+  gw.addEventListener('mouseleave',()=>auto=true);
+  gw.addEventListener('touchstart',()=>auto=false,{passive:true});
+  gw.addEventListener('touchend',()=>auto=true);
 })();
 
 /* ── Smooth anchor ───────────────────────── */
