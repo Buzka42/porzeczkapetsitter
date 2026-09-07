@@ -187,6 +187,15 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .svc-note{font-size:.84rem;color:var(--ink2);line-height:1.75;max-width:440px}
 .svc-note strong{color:var(--currant)}
 
+/* ═══ SERVICES RULES & SURCHARGES ═══════════ */
+.svc-rules{margin-top:56px;padding:36px 40px;background:var(--parchment);border:1px solid var(--border);border-radius:4px 32px 4px 32px}
+.svc-rules-head{margin-bottom:24px}
+.svc-rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px 36px}
+.svc-rule-item{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);gap:1.2rem}
+.svc-rule-name{font-size:.88rem;color:var(--ink);font-weight:400;margin-bottom:2px}
+.svc-rule-desc{font-size:.75rem;color:var(--ink3);line-height:1.45}
+.svc-rule-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--currant);white-space:nowrap;flex-shrink:0}
+
 /* ═══ QUOTE INTERSTITIAL ════════════════════ */
 #quote{background:var(--currant);padding:120px 0;overflow:hidden;position:relative}
 #quote::after{content:'';position:absolute;inset:0;opacity:.05;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;mix-blend-mode:overlay}
@@ -270,22 +279,23 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .bk-step{display:none}
 .bk-step.active{display:block}
 .bk-step-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:1.4rem;color:var(--ink)}
+.bk-step-sub{font-size:.82rem;color:var(--ink2);margin-top:-.8rem;margin-bottom:1.3rem;line-height:1.6}
 
 /* Step 1 — service selection */
 .bk-svc-list{border-top:1px solid var(--border)}
-.bk-svc-opt{display:flex;align-items:center;width:100%;padding:13px 0;border-bottom:1px solid var(--border);gap:1rem;cursor:none;position:relative;background:none}
+.bk-svc-opt{display:flex;align-items:center;width:100%;padding:14px 0;border-bottom:1px solid var(--border);gap:1rem;cursor:none;position:relative;background:none;text-align:left}
 .bk-svc-opt::before{content:'';position:absolute;left:-48px;right:-48px;top:0;bottom:0;background:var(--cream);opacity:0;transition:opacity .25s;z-index:-1}
 .bk-svc-opt:hover::before,.bk-svc-opt.sel::before{opacity:1}
 .bk-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s}
 .bk-svc-opt.sel .bk-radio{border-color:var(--currant);background:var(--currant)}
 .bk-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff;opacity:0;transition:opacity .2s}
 .bk-svc-opt.sel .bk-radio::after{opacity:1}
-.bk-svc-opt-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink);flex:1;text-align:left;transition:color .25s}
+.bk-svc-opt-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ink);flex:1;transition:color .25s}
 .bk-svc-opt.sel .bk-svc-opt-name,.bk-svc-opt:hover .bk-svc-opt-name{color:var(--currant)}
-.bk-svc-opt-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--currant);font-weight:300;white-space:nowrap}
-.bk-svc-opt-price em{font-style:normal;font-size:.7rem;color:var(--ink3)}
+.bk-svc-opt-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--currant);font-weight:300;white-space:nowrap;text-align:right}
+.bk-svc-opt-price em{font-style:normal;font-size:.7rem;color:var(--ink3);display:block}
 
-/* Step 2 — calendar */
+/* Step 2 — calendar & steppers */
 .bk-cal{margin-bottom:1.2rem}
 .bk-cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
 .bk-cal-month{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;letter-spacing:.02em}
@@ -294,7 +304,7 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .bk-cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:.3rem}
 .bk-cal-wd{text-align:center;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:.25rem 0}
 .bk-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.bk-day{aspect-ratio:1;border:none;background:none;font-size:.82rem;font-family:'Inter',sans-serif;font-weight:300;color:var(--ink);display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:background .2s,color .2s}
+.bk-day{aspect-ratio:1;border:none;background:none;font-size:.82rem;font-family:'Inter',sans-serif;font-weight:300;color:var(--ink);display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:none;transition:background .2s,color .2s;position:relative}
 .bk-day:not(.unavail):not(.empty):hover{background:var(--currant-bg);color:var(--currant)}
 .bk-day.sel{background:var(--currant);color:#fff}
 .bk-day.today{font-weight:500}
@@ -304,8 +314,25 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .bk-day.range-start{background:var(--currant);color:#fff;border-radius:50% 0 0 50%}
 .bk-day.range-end{background:var(--currant);color:#fff;border-radius:0 50% 50% 0}
 .bk-day.range-start.range-end{border-radius:50%}
+.bk-day.is-holiday::after{content:'';position:absolute;bottom:3px;width:3px;height:3px;border-radius:50%;background:var(--currant)}
+.bk-day.sel.is-holiday::after{background:#fff}
+
 .bk-nights{display:flex;align-items:center;gap:.6rem;margin:.6rem 0;font-size:.84rem;color:var(--ink2)}
 .bk-nights strong{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--currant)}
+
+/* Steppers & counters */
+.bk-steppers{margin:1.1rem 0;display:flex;flex-direction:column;gap:.6rem}
+.bk-stepper-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem}
+.bk-stepper-title{font-size:.86rem;color:var(--ink);font-weight:400}
+.bk-stepper-sub{font-size:.72rem;color:var(--ink3);margin-top:2px}
+.bk-stepper-ctrl{display:inline-flex;align-items:center;border:1.5px solid var(--border);border-radius:3px;background:#fff}
+.bk-step-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--ink);background:none;border:none;cursor:none;transition:background .2s,color .2s}
+.bk-step-btn:hover{background:var(--currant-bg);color:var(--currant)}
+.bk-step-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;min-width:40px;text-align:center;color:var(--currant)}
+
+/* Notice pill */
+.bk-notice-bar{display:flex;flex-direction:column;gap:6px;margin:.9rem 0}
+.bk-notice-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .85rem;background:var(--currant-bg);border:1px solid #E5D3DD;border-radius:3px;font-size:.75rem;color:var(--currant);line-height:1.4}
 
 /* Time slots */
 .bk-times{margin:1rem 0}
@@ -314,8 +341,36 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .bk-time-btn{padding:.38rem .7rem;border:1.5px solid var(--border);border-radius:3px;font-size:.8rem;font-family:'Inter',sans-serif;font-weight:300;color:var(--ink2);background:none;cursor:none;transition:all .2s}
 .bk-time-btn:hover{border-color:var(--currant);color:var(--currant)}
 .bk-time-btn.sel{background:var(--currant);border-color:var(--currant);color:#fff}
+.bk-time-btn.is-early-late{border-style:dashed}
 
-/* Step 3 — details form */
+/* Step 3 — Options checklist */
+.bk-opt-list{display:flex;flex-direction:column;gap:.65rem;margin:1.2rem 0}
+.bk-opt-item{display:flex;align-items:flex-start;gap:.9rem;padding:.9rem 1.1rem;border:1.5px solid var(--border);border-radius:3px;background:#fff;cursor:none;transition:all .25s;text-align:left;width:100%}
+.bk-opt-item:hover{border-color:var(--currant);background:rgba(242,232,238,.25)}
+.bk-opt-item.sel{border-color:var(--currant);background:var(--currant-bg)}
+.bk-opt-box{width:18px;height:18px;border-radius:3px;border:1.5px solid var(--border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff}
+.bk-opt-item.sel .bk-opt-box{background:var(--currant);border-color:var(--currant);color:#fff}
+.bk-opt-box svg{width:11px;height:11px;stroke-width:2.5;display:none}
+.bk-opt-item.sel .bk-opt-box svg{display:block}
+.bk-opt-info{flex:1}
+.bk-opt-name{font-size:.86rem;color:var(--ink);font-weight:400;margin-bottom:2px}
+.bk-opt-desc{font-size:.74rem;color:var(--ink3);line-height:1.45}
+.bk-opt-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--currant);font-weight:400;white-space:nowrap;margin-left:.6rem}
+
+/* Live mini price indicator */
+.bk-live-bar{display:flex;align-items:baseline;gap:.5rem;font-size:.78rem;color:var(--ink2)}
+.bk-live-bar em{font-style:normal;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--currant)}
+
+/* Step 4 — Estimate breakdown & details form */
+.bk-estimate-card{background:var(--parchment);border:1px solid var(--border);border-radius:4px 20px 4px 20px;padding:24px 28px;margin-bottom:1.6rem}
+.bk-est-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+.bk-est-title{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);font-weight:500}
+.bk-est-big{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--currant);font-weight:400;line-height:1}
+.bk-breakdown{display:flex;flex-direction:column;gap:.45rem;font-size:.82rem;color:var(--ink2)}
+.bk-breakdown-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.bk-breakdown-row strong{color:var(--currant);font-weight:500}
+.bk-est-note{font-size:.72rem;color:var(--ink3);margin-top:.8rem;padding-top:.7rem;border-top:1px dashed var(--border);line-height:1.5}
+
 .bk-summary-bar{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;margin-bottom:1.2rem;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--ink2);flex-wrap:wrap}
 .bk-summary-bar .hi{font-family:'Cormorant Garamond',serif;color:var(--currant);font-size:.9rem}
 .bk-summary-bar .sep{color:var(--border)}
@@ -326,13 +381,21 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .fg textarea{height:80px;resize:vertical}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-/* Step 4 — confirmation */
+/* Step 5 — confirmation */
 .bk-confirm-wrap{text-align:center;padding:2rem 0 1rem}
 .bk-confirm-icon{width:52px;height:52px;border-radius:50%;background:var(--currant);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem}
-.bk-confirm-msg{font-size:.88rem;color:var(--ink2);line-height:1.85;max-width:280px;margin:0 auto 2rem}
+.bk-confirm-msg{font-size:.88rem;color:var(--ink2);line-height:1.85;max-width:340px;margin:0 auto 1.5rem}
+.bk-summary-box{background:var(--parchment);border:1px solid var(--border);border-radius:4px 16px 4px 16px;padding:20px 24px;text-align:left;margin:1.4rem auto;font-size:.82rem;line-height:1.8;color:var(--ink2);max-width:440px}
+.bk-summary-box strong{color:var(--ink)}
+.bk-summary-box .hi-val{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--currant);font-weight:500;display:block;margin-top:.3rem}
+.bk-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+.bk-btn-ghost{padding:.65rem 1.3rem;border:1.5px solid var(--border);border-radius:3px;font-size:.78rem;color:var(--ink);background:none;cursor:none;transition:all .25s}
+.bk-btn-ghost:hover{border-color:var(--currant);color:var(--currant);background:var(--currant-bg)}
+.bk-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--currant);color:#fff;padding:10px 22px;border-radius:3px;font-size:.8rem;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .3s}
+.bk-toast.show{opacity:1}
 
 /* Widget nav buttons */
-.bk-nav{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem}
+.bk-nav{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem;gap:.8rem}
 .bk-nav.right{justify-content:flex-end}
 .bk-btn-back{font-size:.76rem;color:var(--ink3);letter-spacing:.04em;background:none;cursor:none;transition:color .2s;padding:0}
 .bk-btn-back:hover{color:var(--ink)}
@@ -375,6 +438,10 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
   .foot{flex-direction:column;gap:1rem;text-align:center}
   .hero-watermark{display:none}
   .booking-widget{padding:24px 20px}
+  .svc-rules{padding:24px 20px}
+  .svc-rules-grid{grid-template-columns:1fr;gap:8px}
+  .svc-rule-item{flex-direction:column;gap:.35rem}
+  .bk-est-head{flex-direction:column;align-items:flex-start}
 }
 
 /* ═══ REDUCED MOTION ════════════════════════ */
@@ -499,39 +566,90 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
     <div class="svc-list">
       <div class="svc-row rv">
         <span class="svc-n">01</span>
-        <div class="svc-info"><h3>Spacer</h3><p class="svc-desc">30–45 min · 1 pies 60 zł · 2 psy 80 zł · +20 zł w święta.</p></div>
-        <div class="svc-price"><span class="svc-price-num">od 60</span><span class="svc-price-unit">zł&nbsp;/&nbsp;spacer</span></div>
+        <div class="svc-info"><h3>Opieka całodobowa / domowa u Sittera</h3><p class="svc-desc">Wyjściowa baza 100 zł za dobę. Domowy pobyt u mnie z pełną troską, spacerami, bezpieczeństwem i codziennymi relacjami foto/wideo.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 100</span><span class="svc-price-unit">zł&nbsp;/&nbsp;doba</span></div>
         <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
       </div>
       <div class="svc-row rv d1">
         <span class="svc-n">02</span>
-        <div class="svc-info"><h3>Wizyty godzinowe</h3><p class="svc-desc">Pierwsza godzina 50 zł, każda kolejna +15 zł.</p></div>
-        <div class="svc-price"><span class="svc-price-num">od 50</span><span class="svc-price-unit">zł&nbsp;/&nbsp;godz.</span></div>
+        <div class="svc-info"><h3>Wizyta domowa (dla kota / gryzonia)</h3><p class="svc-desc">Wyjściowa baza 55 zł za pierwszą godzinę, każda kolejna godzina +15 zł. Karmienie, kuweta, podanie leków i zabawa w Twoim domu.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 55</span><span class="svc-price-unit">zł&nbsp;/&nbsp;wizyta</span></div>
         <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
       </div>
       <div class="svc-row rv d2">
         <span class="svc-n">03</span>
-        <div class="svc-info"><h3>Wizyta u kotów</h3><p class="svc-desc">Pon–Pt 50 zł · Sb/Nd 60 zł · Święta 75 zł.</p></div>
-        <div class="svc-price"><span class="svc-price-num">od 50</span><span class="svc-price-unit">zł&nbsp;/&nbsp;wizyta</span></div>
+        <div class="svc-info"><h3>Spacer z psem</h3><p class="svc-desc">30–45 min uważnego spaceru dopasowanego do tempa Twojego pupila. Baza od 60 zł.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 60</span><span class="svc-price-unit">zł&nbsp;/&nbsp;spacer</span></div>
         <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
       </div>
       <div class="svc-row rv">
         <span class="svc-n">04</span>
-        <div class="svc-info"><h3>Opieka w domu klienta</h3><p class="svc-desc">Przyjeżdżam do Twojego domu. Cena zależy od liczby zwierząt i zakresu obowiązków.</p></div>
-        <div class="svc-price"><span class="svc-price-num svc-rng">150–300</span><span class="svc-price-unit">zł&nbsp;/&nbsp;dzień</span></div>
+        <div class="svc-info"><h3>Opieka w domu klienta</h3><p class="svc-desc">Dedykowana opieka u Ciebie w domu. Zakres obowiązków i czas dopasowany do indywidualnych potrzeb.</p></div>
+        <div class="svc-price"><span class="svc-price-num svc-rng">od 150</span><span class="svc-price-unit">zł&nbsp;/&nbsp;dzień</span></div>
         <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
       </div>
       <div class="svc-row rv d1">
         <span class="svc-n">05</span>
-        <div class="svc-info"><h3>Nocleg u petsittera</h3><p class="svc-desc">Twój pupil spędza noc u mnie w domu – bezpiecznie, ciepło, z pełną opieką. Cena zależy od zwierzęcia.</p></div>
-        <div class="svc-price"><span class="svc-price-num svc-rng">100–200</span><span class="svc-price-unit">zł&nbsp;/&nbsp;noc</span></div>
+        <div class="svc-info"><h3>Zwierzęta egzotyczne</h3><p class="svc-desc">Papugi, króliki, gryzonie i inne egzotyki – z pełną znajomością gatunku i czułością.</p></div>
+        <div class="svc-price"><span class="svc-price-num">od 55</span><span class="svc-price-unit">zł&nbsp;/&nbsp;wizyta</span></div>
         <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
       </div>
-      <div class="svc-row rv d2">
-        <span class="svc-n">06</span>
-        <div class="svc-info"><h3>Zwierzęta egzotyczne</h3><p class="svc-desc">Papugi, gryzonie i inne egzotyki – z pełną troską i znajomością gatunku.</p></div>
-        <div class="svc-price"><span class="svc-price-num">80</span><span class="svc-price-unit">zł&nbsp;/&nbsp;wizyta</span></div>
-        <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
+    </div>
+    <div class="svc-rules rv d1">
+      <div class="svc-rules-head">
+        <p class="label" style="margin-bottom:0.5rem">Transparentne warunki</p>
+        <h3 class="serif" style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300">Dodatkowe czynniki &amp; dopłaty</h3>
+      </div>
+      <div class="svc-rules-grid">
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Weekend (sobota – niedziela)</div>
+            <div class="svc-rule-desc">Dopłata do stawki bazowej za dzień weekendowy</div>
+          </div>
+          <span class="svc-rule-val">+10 zł / doba</span>
+        </div>
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Święta i dni wolne</div>
+            <div class="svc-rule-desc">Np. Sylwester, Boże Narodzenie, majówka, Wielkanoc</div>
+          </div>
+          <span class="svc-rule-val">+50% stawki</span>
+        </div>
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Szczeniak (do 1. r.ż.) / szczególna uwaga</div>
+            <div class="svc-rule-desc">Pies z lękiem separacyjnym, nauka czystości, zniszczenia</div>
+          </div>
+          <span class="svc-rule-val">+50 zł / doba</span>
+        </div>
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Pies jedyny podczas opieki (wyłączność)</div>
+            <div class="svc-rule-desc">Gwarancja braku innych psów w domu na czas pobytu</div>
+          </div>
+          <span class="svc-rule-val">+70 zł / doba</span>
+        </div>
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Podawanie leków</div>
+            <div class="svc-rule-desc">Codzienne, punktualne podawanie lekarstw lub suplementów</div>
+          </div>
+          <span class="svc-rule-val">+10 zł / dzień</span>
+        </div>
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Rezerwacja last minute (&lt; 5 dni)</div>
+            <div class="svc-rule-desc">Zgłoszenie na mniej niż 5 dni przed terminem opieki</div>
+          </div>
+          <span class="svc-rule-val">+50 zł jednorazowo</span>
+        </div>
+        <div class="svc-rule-item">
+          <div>
+            <div class="svc-rule-name">Nietypowe godziny przekazania psa</div>
+            <div class="svc-rule-desc">Przyjazd przed 8:00 rano LUB odbiór po 22:00</div>
+          </div>
+          <span class="svc-rule-val">+50 zł jednorazowo</span>
+        </div>
       </div>
     </div>
     <div class="svc-footer rv">
@@ -752,234 +870,871 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
    BOOKING WIDGET
 ════════════════════════════════════════════ */
 const BK = {
-  step: 1,
-  svc: null,
+  step: 1, // 1: Usługa, 2: Termin & Czas, 3: Dopłaty, 4: Wycena & Dane, 5: Potwierdzenie
+  svc: 'calodobowa',
   date: null,
   dateEnd: null,
-  time: null,
+  time: '10:00',
   calY: new Date().getFullYear(),
   calM: new Date().getMonth(),
+
+  // Quantities & durations
+  days: 1,
+  visits: 1,
+  hours: 1,
+  walks: 1,
+
+  // Surcharges / options
+  optPuppy: false,
+  optSoleDog: false,
+  optWeekend: false,
+  optHoliday: false,
+  optMeds: false,
+  optLastMinute: false,
+  optEarlyLate: false,
+
+  // Customer details
+  name: '',
+  phone: '',
+  email: '',
+  pet: '',
 
   MONTHS: ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'],
   MONTHS_GEN: ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'],
   WDAYS: ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'],
+
   SVCS: [
-    {id:'spacer',     name:'Spacer (30–45 min)',     price:'od 60',   unit:'/ spacer', range:false},
-    {id:'godzinowe',  name:'Wizyty godzinowe',       price:'od 50',   unit:'/ godz.',  range:false},
-    {id:'koty',       name:'Wizyta u kotów',          price:'od 50',   unit:'/ wizyta', range:false},
-    {id:'dom',        name:'Opieka w domu klienta',  price:'150–300', unit:'/ dzień',  range:true},
-    {id:'nocleg',     name:'Nocleg u petsittera',    price:'100–200', unit:'/ noc',    range:true},
-    {id:'egzotyczne', name:'Zwierzęta egzotyczne',   price:'80',      unit:'zł',       range:false},
+    {
+      id: 'calodobowa',
+      name: 'Opieka całodobowa / domowa u Sittera',
+      price: 'od 100',
+      unit: '/ doba',
+      desc: 'Wyjściowa baza 100 zł za dobę. Domowy pobyt z całodobową troską, spacerami i stałym kontaktem.'
+    },
+    {
+      id: 'domowa',
+      name: 'Wizyta domowa (dla kota / gryzonia / psa)',
+      price: 'od 55',
+      unit: '/ wizyta',
+      desc: 'Baza 55 zł za 1. godzinę (+15 zł za każdą kolejną). Karmienie, kuweta, leki i zabawa.'
+    },
+    {
+      id: 'spacer',
+      name: 'Spacer z psem (30–45 min)',
+      price: 'od 60',
+      unit: '/ spacer',
+      desc: 'Baza 60 zł za spacer. 30–45 min uważnego spaceru w tempie i rytmie Twojego pupila.'
+    }
   ],
-  TIMES: ['8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'],
+
+  TIMES: [
+    { t: '7:00',  early: true },
+    { t: '7:30',  early: true },
+    { t: '8:00',  early: false },
+    { t: '9:00',  early: false },
+    { t: '10:00', early: false },
+    { t: '11:00', early: false },
+    { t: '12:00', early: false },
+    { t: '13:00', early: false },
+    { t: '14:00', early: false },
+    { t: '15:00', early: false },
+    { t: '16:00', early: false },
+    { t: '17:00', early: false },
+    { t: '18:00', early: false },
+    { t: '19:00', early: false },
+    { t: '20:00', early: false },
+    { t: '22:00', early: false },
+    { t: '22:30', early: true }
+  ],
 
   el() { return document.getElementById('bw'); },
   svcObj() { return this.SVCS.find(s=>s.id===this.svc); },
-  isRange() { return !!this.svcObj()?.range; },
+  isRange() { return this.svc === 'calodobowa'; },
 
   fmt(d) {
     if(!d) return '';
     return `${d.getDate()} ${this.MONTHS_GEN[d.getMonth()]}`;
   },
 
-  nights() {
-    if(!this.date||!this.dateEnd) return 0;
-    return Math.round((this.dateEnd-this.date)/86400000);
+  fmtRange() {
+    if(!this.date) return '';
+    if(this.isRange()){
+      if(this.dateEnd) return `${this.fmt(this.date)} – ${this.fmt(this.dateEnd)} (${this.days} ${this.plur(this.days, 'doba', 'doby', 'dób')})`;
+      return `${this.fmt(this.date)} (wybierz koniec w kalendarzu)`;
+    }
+    return `${this.fmt(this.date)}${this.time ? ' · godz. ' + this.time : ''}`;
   },
 
-  nightLabel(n) {
-    const unitN = this.svc==='nocleg' ? (n===1?'noc':n<5?'noce':'nocy') : (n===1?'dzień':'dni');
-    return `${n} ${unitN}`;
+  plur(n, one, few, many) {
+    if(n === 1) return one;
+    const r10 = n % 10, r100 = n % 100;
+    if(r10 >= 2 && r10 <= 4 && (r100 < 10 || r100 >= 20)) return few;
+    return many;
+  },
+
+  getEaster(y) {
+    const a = y % 19, b = Math.floor(y / 100), c = y % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31) - 1;
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(y, month, day);
+  },
+
+  isHoliday(dt) {
+    if(!dt) return false;
+    const m = dt.getMonth(), d = dt.getDate(), y = dt.getFullYear();
+    if(m === 0 && (d === 1 || d === 6)) return true;
+    if(m === 4 && (d === 1 || d === 3)) return true;
+    if(m === 7 && d === 15) return true;
+    if(m === 10 && (d === 1 || d === 11)) return true;
+    if(m === 11 && (d === 25 || d === 26 || d === 31)) return true;
+    const easter = this.getEaster(y);
+    const easterMon = new Date(easter.getTime() + 86400000);
+    const corpus = new Date(easter.getTime() + 60 * 86400000);
+    const eq = (d1, d2) => d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
+    return eq(dt, easter) || eq(dt, easterMon) || eq(dt, corpus);
+  },
+
+  isWeekend(dt) {
+    if(!dt) return false;
+    const d = dt.getDay();
+    return d === 0 || d === 6;
+  },
+
+  isLastMinute(dt) {
+    if(!dt) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const target = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
+    const diff = Math.round((target - today) / 86400000);
+    return diff >= 0 && diff < 5;
+  },
+
+  detectDateFeatures() {
+    if(!this.date) return;
+    let hasWk = false;
+    let hasHol = false;
+    let isLm = this.isLastMinute(this.date);
+
+    if(this.isRange() && this.dateEnd) {
+      let cur = new Date(this.date.getTime());
+      while(cur <= this.dateEnd) {
+        if(this.isWeekend(cur)) hasWk = true;
+        if(this.isHoliday(cur)) hasHol = true;
+        cur.setDate(cur.getDate() + 1);
+      }
+    } else {
+      if(this.isWeekend(this.date)) hasWk = true;
+      if(this.isHoliday(this.date)) hasHol = true;
+    }
+
+    this.optWeekend = hasWk;
+    this.optHoliday = hasHol;
+    this.optLastMinute = isLm;
+  },
+
+  countWeekends() {
+    if(!this.date) return 0;
+    if(this.isRange() && this.dateEnd) {
+      let count = 0;
+      let cur = new Date(this.date.getTime());
+      while(cur < this.dateEnd) {
+        if(this.isWeekend(cur)) count++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      return Math.max(1, count);
+    }
+    return this.isWeekend(this.date) ? 1 : 0;
+  },
+
+  calc() {
+    let baseTotal = 0;
+    let breakdown = [];
+    const s = this.svc;
+
+    if(s === 'calodobowa') {
+      const qty = Math.max(1, this.days);
+      const unit = 100;
+      baseTotal = qty * unit;
+      breakdown.push({
+        label: `Opieka całodobowa (${qty} ${this.plur(qty, 'doba', 'doby', 'dób')} × ${unit} zł)`,
+        val: baseTotal
+      });
+
+      if(this.optPuppy) {
+        const v = qty * 50;
+        breakdown.push({ label: `Szczeniak / szczególna uwaga (${qty} × 50 zł)`, val: v });
+      }
+      if(this.optSoleDog) {
+        const v = qty * 70;
+        breakdown.push({ label: `Wyłączność – jedyny pies (${qty} × 70 zł)`, val: v });
+      }
+      if(this.optWeekend) {
+        const wk = this.countWeekends() || 1;
+        const v = wk * 10;
+        breakdown.push({ label: `Dopłata weekendowa (${wk} ${this.plur(wk, 'dzień', 'dni', 'dni')} × 10 zł)`, val: v });
+      }
+      if(this.optHoliday) {
+        const v = Math.round(baseTotal * 0.5);
+        breakdown.push({ label: 'Święta i dni wolne (+50% bazy)', val: v });
+      }
+      if(this.optMeds) {
+        const v = qty * 10;
+        breakdown.push({ label: `Podawanie leków (${qty} × 10 zł)`, val: v });
+      }
+    } else if(s === 'domowa') {
+      const h = Math.max(1, this.hours);
+      const perVisit = 55 + (h - 1) * 15;
+      const qty = Math.max(1, this.visits);
+      baseTotal = qty * perVisit;
+      const hDesc = h === 1 ? '1 godz.' : `${h} godz. (55 + ${h-1}×15 zł)`;
+      breakdown.push({
+        label: `Wizyta domowa (${qty} ${this.plur(qty, 'wizyta', 'wizyty', 'wizyt')} · ${hDesc})`,
+        val: baseTotal
+      });
+
+      if(this.optPuppy) {
+        const v = qty * 50;
+        breakdown.push({ label: `Szczeniak / szczególna uwaga (${qty} × 50 zł)`, val: v });
+      }
+      if(this.optWeekend) {
+        const v = qty * 10;
+        breakdown.push({ label: `Dopłata weekendowa (${qty} × 10 zł)`, val: v });
+      }
+      if(this.optHoliday) {
+        const v = Math.round(baseTotal * 0.5);
+        breakdown.push({ label: 'Święta i dni wolne (+50% bazy)', val: v });
+      }
+      if(this.optMeds) {
+        const v = qty * 10;
+        breakdown.push({ label: `Podawanie leków (${qty} × 10 zł)`, val: v });
+      }
+    } else if(s === 'spacer') {
+      const qty = Math.max(1, this.walks);
+      const unit = 60;
+      baseTotal = qty * unit;
+      breakdown.push({
+        label: `Spacer (${qty} ${this.plur(qty, 'spacer', 'spacery', 'spacerów')} × ${unit} zł)`,
+        val: baseTotal
+      });
+
+      if(this.optPuppy) {
+        const v = qty * 50;
+        breakdown.push({ label: `Szczeniak / szczególna uwaga (${qty} × 50 zł)`, val: v });
+      }
+      if(this.optWeekend) {
+        const v = qty * 10;
+        breakdown.push({ label: `Spacer w weekend (${qty} × 10 zł)`, val: v });
+      }
+      if(this.optHoliday) {
+        const v = Math.round(baseTotal * 0.5);
+        breakdown.push({ label: 'Święta i dni wolne (+50% bazy)', val: v });
+      }
+      if(this.optMeds) {
+        const v = qty * 10;
+        breakdown.push({ label: `Podawanie leków (${qty} × 10 zł)`, val: v });
+      }
+    }
+
+    if(this.optLastMinute) {
+      breakdown.push({ label: 'Rezerwacja last minute (< 5 dni)', val: 50 });
+    }
+    if(this.optEarlyLate) {
+      breakdown.push({ label: 'Nietypowe godziny (przed 8:00 / po 22:00)', val: 50 });
+    }
+
+    let total = 0;
+    breakdown.forEach(item => total += item.val);
+    return {
+      baseTotal,
+      breakdown,
+      total,
+      estimateText: `ok. ${total} zł`
+    };
   },
 
   lastStep: 0,
   render() {
-    const animate=this.step!==this.lastStep;
-    this.lastStep=this.step;
-    this.el().innerHTML=`<div${animate?' class="bk-body"':''}>${this.tpl()}</div>`;
+    const animate = this.step !== this.lastStep;
+    this.lastStep = this.step;
+    this.el().innerHTML = `<div${animate ? ' class="bk-body"' : ''}>${this.tpl()}</div>`;
     this.bind();
   },
 
   progress() {
-    const labels=['Usługa','Termin','Dane','Gotowe'];
-    return `<div class="bk-prog">${labels.map((l,i)=>{
-      const n=i+1,cls=n===this.step?'active':n<this.step?'done':'';
-      return `${i>0?'<div class="bk-prog-line"></div>':''}
+    const labels = ['Usługa', 'Termin', 'Dopłaty', 'Wycena'];
+    return `<div class="bk-prog">${labels.map((l, i) => {
+      const n = i + 1;
+      const cls = this.step === 5 ? 'done' : n === this.step ? 'active' : n < this.step ? 'done' : '';
+      return `${i > 0 ? '<div class="bk-prog-line"></div>' : ''}
         <div class="bk-prog-step ${cls}">
-          <div class="bk-prog-dot">${n<this.step?'✓':n}</div>
+          <div class="bk-prog-dot">${(n < this.step || this.step === 5) ? '✓' : n}</div>
           <span class="bk-prog-lbl">${l}</span>
         </div>`;
     }).join('')}</div>`;
   },
 
   tpl() {
-    if(this.step===1) return this.progress()+this.step1();
-    if(this.step===2) return this.progress()+this.step2();
-    if(this.step===3) return this.progress()+this.step3();
-    return this.progress()+this.step4();
+    if(this.step === 1) return this.progress() + this.step1();
+    if(this.step === 2) return this.progress() + this.step2();
+    if(this.step === 3) return this.progress() + this.step3();
+    if(this.step === 4) return this.progress() + this.step4();
+    return this.progress() + this.step5();
   },
 
   step1() {
-    const rows=this.SVCS.map(s=>`
-      <button class="bk-svc-opt${this.svc===s.id?' sel':''}" data-svc="${s.id}" type="button">
+    const rows = this.SVCS.map(s => `
+      <button class="bk-svc-opt${this.svc === s.id ? ' sel' : ''}" data-svc="${s.id}" type="button">
         <div class="bk-radio"></div>
-        <span class="bk-svc-opt-name">${s.name}</span>
-        <span class="bk-svc-opt-price">${s.price} <em>${s.unit}</em></span>
+        <div class="bk-opt-info">
+          <div class="bk-svc-opt-name">${s.name}</div>
+          <div class="bk-opt-desc">${s.desc}</div>
+        </div>
+        <div class="bk-svc-opt-price">${s.price} <em>zł ${s.unit}</em></div>
       </button>`).join('');
-    return `<h4 class="bk-step-title">Wybierz usługę</h4>
+    return `<h4 class="bk-step-title">Krok 1: Wybór usługi głównej</h4>
+      <p class="bk-step-sub">Wybierz usługę, aby przejść do wyboru terminu i spersonalizowanej kalkulacji.</p>
       <div class="bk-svc-list">${rows}</div>
       <div class="bk-nav right">
-        <button class="bk-btn-next${this.svc?'':' off'}" id="bk-n1" type="button">Dalej →</button>
+        <button class="bk-btn-next${this.svc ? '' : ' off'}" id="bk-n1" type="button">Dalej do terminu →</button>
       </div>`;
   },
 
   step2() {
-    const range=this.isRange();
-    const canNext=range?(this.date&&this.dateEnd):(this.date&&this.time);
-    let extra='';
-    if(range&&this.date&&this.dateEnd){
-      const n=this.nights();
-      extra=`<div class="bk-nights">Wybrano: <strong>${this.nightLabel(n)}</strong> &nbsp;·&nbsp; ${this.fmt(this.date)} – ${this.fmt(this.dateEnd)}</div>`;
-    } else if(range&&this.date&&!this.dateEnd){
-      extra=`<div class="bk-nights" style="color:var(--ink3)">Wybierz datę zakończenia</div>`;
+    const isCalodobowa = this.svc === 'calodobowa';
+    const isDomowa = this.svc === 'domowa';
+    const isSpacer = this.svc === 'spacer';
+
+    let canNext = false;
+    if(isCalodobowa) canNext = !!(this.date && this.dateEnd);
+    else canNext = !!(this.date && this.time);
+
+    let notices = [];
+    if(this.optLastMinute) notices.push('⚡ <strong>Rezerwacja last minute (&lt; 5 dni):</strong> dodano dopłatę ekspresową (+50 zł).');
+    if(this.optWeekend) notices.push('📅 <strong>Termin obejmuje weekend (sob/nd):</strong> dopłata +10 zł do stawki bazowej.');
+    if(this.optHoliday) notices.push('🎉 <strong>Termin w święta / dni wolne:</strong> dopłata +50% do stawki bazowej.');
+    if(this.optEarlyLate) notices.push('⏰ <strong>Nietypowa godzina (&lt; 8:00 lub &gt; 22:00):</strong> dopłata +50 zł.');
+
+    const noticeHtml = notices.length ? `
+      <div class="bk-notice-bar">
+        ${notices.map(n => `<div class="bk-notice-pill">${n}</div>`).join('')}
+      </div>` : '';
+
+    let dateInfo = '';
+    if(isCalodobowa) {
+      if(this.date && this.dateEnd) {
+        dateInfo = `<div class="bk-nights">Wybrano: <strong>${this.days} ${this.plur(this.days, 'dobę', 'doby', 'dób')}</strong> &nbsp;·&nbsp; ${this.fmt(this.date)} – ${this.fmt(this.dateEnd)}</div>`;
+      } else if(this.date && !this.dateEnd) {
+        dateInfo = `<div class="bk-nights" style="color:var(--currant)">Wskaż w kalendarzu datę zakończenia pobytu</div>`;
+      } else {
+        dateInfo = `<div class="bk-nights" style="color:var(--ink3)">Zaznacz datę rozpoczęcia i zakończenia na kalendarzu</div>`;
+      }
+    } else {
+      if(this.date) {
+        dateInfo = `<div class="bk-nights">Wybrany dzień: <strong>${this.fmt(this.date)}</strong>${this.time ? ' · godz. ' + this.time : ''}</div>`;
+      } else {
+        dateInfo = `<div class="bk-nights" style="color:var(--ink3)">Wybierz dzień w kalendarzu</div>`;
+      }
     }
-    return `<h4 class="bk-step-title">${range?'Wybierz daty pobytu':'Wybierz termin'}</h4>
+
+    let steppersHtml = '';
+    if(isCalodobowa) {
+      steppersHtml = `
+        <div class="bk-steppers">
+          <div class="bk-stepper-row">
+            <div>
+              <div class="bk-stepper-title">Liczba dób opieki</div>
+              <div class="bk-stepper-sub">Wyjściowa baza: 100 zł za dobę (możesz też zaznaczyć zakres na kalendarzu)</div>
+            </div>
+            <div class="bk-stepper-ctrl">
+              <button class="bk-step-btn" data-act="days-dec" type="button" aria-label="Mniej dób">−</button>
+              <span class="bk-step-val">${this.days}</span>
+              <button class="bk-step-btn" data-act="days-inc" type="button" aria-label="Więcej dób">+</button>
+            </div>
+          </div>
+        </div>`;
+    } else if(isDomowa) {
+      const h = this.hours;
+      const perVisit = 55 + (h - 1) * 15;
+      steppersHtml = `
+        <div class="bk-steppers">
+          <div class="bk-stepper-row">
+            <div>
+              <div class="bk-stepper-title">Czas trwania jednej wizyty</div>
+              <div class="bk-stepper-sub">55 zł za 1. godzinę, każda kolejna +15 zł (${h}h = ${perVisit} zł / wizyta)</div>
+            </div>
+            <div class="bk-stepper-ctrl">
+              <button class="bk-step-btn" data-act="hours-dec" type="button" aria-label="Mniej godzin">−</button>
+              <span class="bk-step-val">${this.hours}h</span>
+              <button class="bk-step-btn" data-act="hours-inc" type="button" aria-label="Więcej godzin">+</button>
+            </div>
+          </div>
+          <div class="bk-stepper-row">
+            <div>
+              <div class="bk-stepper-title">Liczba wizyt</div>
+              <div class="bk-stepper-sub">Łączna liczba wizyt domowych</div>
+            </div>
+            <div class="bk-stepper-ctrl">
+              <button class="bk-step-btn" data-act="visits-dec" type="button" aria-label="Mniej wizyt">−</button>
+              <span class="bk-step-val">${this.visits}</span>
+              <button class="bk-step-btn" data-act="visits-inc" type="button" aria-label="Więcej wizyt">+</button>
+            </div>
+          </div>
+        </div>`;
+    } else if(isSpacer) {
+      steppersHtml = `
+        <div class="bk-steppers">
+          <div class="bk-stepper-row">
+            <div>
+              <div class="bk-stepper-title">Liczba spacerów</div>
+              <div class="bk-stepper-sub">Wyjściowa baza: 60 zł za spacer (30–45 min)</div>
+            </div>
+            <div class="bk-stepper-ctrl">
+              <button class="bk-step-btn" data-act="walks-dec" type="button" aria-label="Mniej spacerów">−</button>
+              <span class="bk-step-val">${this.walks}</span>
+              <button class="bk-step-btn" data-act="walks-inc" type="button" aria-label="Więcej spacerów">+</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    const curEstimate = this.calc().estimateText;
+
+    return `<h4 class="bk-step-title">Krok 2: Czas trwania &amp; termin</h4>
+      <p class="bk-step-sub">${isCalodobowa ? 'Zaznacz daty pobytu w kalendarzu lub ustaw liczbę dób suwakiem:' : 'Wskaż datę w kalendarzu i doprecyzuj liczbę godzin lub wizyt:'}</p>
       ${this.calendar()}
-      ${range?extra:(this.date?this.times():'')}
+      ${dateInfo}
+      ${steppersHtml}
+      ${this.times()}
+      ${noticeHtml}
       <div class="bk-nav">
         <button class="bk-btn-back" id="bk-b2" type="button">← Wstecz</button>
-        <button class="bk-btn-next${canNext?'':' off'}" id="bk-n2" type="button">Dalej →</button>
+        <div class="bk-live-bar">Szacunek bazy: <em>${curEstimate}</em></div>
+        <button class="bk-btn-next${canNext ? '' : ' off'}" id="bk-n2" type="button">Dalej do dopłat →</button>
       </div>`;
   },
 
   calendar() {
-    const today=new Date(),y=this.calY,m=this.calM;
-    const todayMid=new Date(today.getFullYear(),today.getMonth(),today.getDate());
-    const firstDow=(new Date(y,m,1).getDay()+6)%7;
-    const daysInMonth=new Date(y,m+1,0).getDate();
-    const range=this.isRange();
-    let cells='';
-    for(let i=0;i<firstDow;i++) cells+=`<div class="bk-day empty"></div>`;
-    for(let d=1;d<=daysInMonth;d++){
-      const dt=new Date(y,m,d);
-      const past=dt<todayMid, sun=dt.getDay()===0;
-      let cls=[];
-      if(past||sun) { cls.push('unavail'); }
-      else if(range){
-        const isS=this.date&&dt.getTime()===this.date.getTime();
-        const isE=this.dateEnd&&dt.getTime()===this.dateEnd.getTime();
-        const inR=this.date&&this.dateEnd&&dt>this.date&&dt<this.dateEnd;
+    const today = new Date(), y = this.calY, m = this.calM;
+    const todayMid = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const firstDow = (new Date(y, m, 1).getDay() + 6) % 7;
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const range = this.isRange();
+    let cells = '';
+    for(let i = 0; i < firstDow; i++) cells += '<div class="bk-day empty"></div>';
+    for(let d = 1; d <= daysInMonth; d++) {
+      const dt = new Date(y, m, d);
+      const past = dt < todayMid;
+      const isHol = this.isHoliday(dt);
+      let cls = [];
+      if(past) {
+        cls.push('unavail');
+      } else if(range) {
+        const isS = this.date && dt.getTime() === this.date.getTime();
+        const isE = this.dateEnd && dt.getTime() === this.dateEnd.getTime();
+        const inR = this.date && this.dateEnd && dt > this.date && dt < this.dateEnd;
         if(isS) cls.push('range-start');
         if(isE) cls.push('range-end');
         if(inR) cls.push('in-range');
       } else {
-        if(this.date&&this.date.getDate()===d&&this.date.getMonth()===m&&this.date.getFullYear()===y) cls.push('sel');
+        if(this.date && this.date.getDate() === d && this.date.getMonth() === m && this.date.getFullYear() === y) cls.push('sel');
       }
-      if(today.getDate()===d&&today.getMonth()===m&&today.getFullYear()===y) cls.push('today');
-      cells+=`<button class="bk-day${cls.length?' '+cls.join(' '):''}" data-d="${d}" type="button"${past||sun?' disabled':''}>${d}</button>`;
+      if(today.getDate() === d && today.getMonth() === m && today.getFullYear() === y) cls.push('today');
+      if(isHol) cls.push('is-holiday');
+      cells += `<button class="bk-day${cls.length ? ' ' + cls.join(' ') : ''}" data-d="${d}" type="button"${past ? ' disabled' : ''} title="${isHol ? 'Święto / dzień wolny' : ''}">${d}</button>`;
     }
     return `<div class="bk-cal">
       <div class="bk-cal-head">
-        <button class="bk-cal-nav-btn" data-dir="-1" type="button">‹</button>
+        <button class="bk-cal-nav-btn" data-dir="-1" type="button" aria-label="Poprzedni miesiąc">‹</button>
         <span class="bk-cal-month serif">${this.MONTHS[m]} ${y}</span>
-        <button class="bk-cal-nav-btn" data-dir="1" type="button">›</button>
+        <button class="bk-cal-nav-btn" data-dir="1" type="button" aria-label="Następny miesiąc">›</button>
       </div>
-      <div class="bk-cal-weekdays">${this.WDAYS.map(d=>`<div class="bk-cal-wd">${d}</div>`).join('')}</div>
+      <div class="bk-cal-weekdays">${this.WDAYS.map(d => `<div class="bk-cal-wd">${d}</div>`).join('')}</div>
       <div class="bk-cal-grid">${cells}</div>
     </div>`;
   },
 
   times() {
-    const slots=this.TIMES.map(t=>`
-      <button class="bk-time-btn${this.time===t?' sel':''}" data-t="${t}" type="button">${t}</button>`).join('');
-    return `<div class="bk-times"><p class="bk-times-lbl">Godzina</p><div class="bk-time-row">${slots}</div></div>`;
+    const slots = this.TIMES.map(item => `
+      <button class="bk-time-btn${this.time === item.t ? ' sel' : ''}${item.early ? ' is-early-late' : ''}" data-t="${item.t}" data-early="${item.early}" type="button" title="${item.early ? 'Nietypowa godzina (+50 zł)' : ''}">
+        ${item.t}
+      </button>`).join('');
+    return `<div class="bk-times">
+      <p class="bk-times-lbl">Preferowana godzina przekazania / rozpoczęcia</p>
+      <div class="bk-time-row">${slots}</div>
+    </div>`;
   },
 
   step3() {
-    const s=this.svcObj(), range=this.isRange();
-    const dateStr=range?`${this.fmt(this.date)} – ${this.fmt(this.dateEnd)}`:`${this.fmt(this.date)}`;
-    return `<h4 class="bk-step-title">Twoje dane</h4>
-      <div class="bk-summary-bar">
-        <span class="hi">${s?.name}</span><span class="sep">·</span>
-        <span>${dateStr}</span>
-        ${!range&&this.time?`<span class="sep">·</span><span>${this.time}</span>`:''}
-      </div>
-      <div class="f2">
-        <div class="fg"><label>Imię i nazwisko</label><input id="bk-nm" type="text" placeholder="Jan Kowalski" autocomplete="name" required></div>
-        <div class="fg"><label>Telefon</label><input id="bk-tel" type="tel" placeholder="+48 000 000 000" autocomplete="tel"></div>
-      </div>
-      <div class="fg"><label>E-mail</label><input id="bk-em" type="email" placeholder="twoj@email.pl" autocomplete="email" required></div>
-      <div class="fg"><label>Opowiedz mi o swoim pupilu</label><textarea id="bk-pet" placeholder="Imię, rasa, wiek, charakter…"></textarea></div>
+    const isCalodobowa = this.svc === 'calodobowa';
+
+    const opts = [
+      {
+        id: 'optPuppy',
+        name: 'Szczeniak (do 1. roku życia) / pies wymagający szczególnej uwagi',
+        desc: 'Szczeniaki (nauka czystości, zniszczenia) lub psy z silnym lękiem separacyjnym.',
+        price: '+50 zł / doba',
+        sel: this.optPuppy
+      },
+      ...(isCalodobowa ? [{
+        id: 'optSoleDog',
+        name: 'Pies, który musi być jedynym psem podczas opieki (wyłączność)',
+        desc: 'Gwarancja 100% wyłączności przestrzeni domowej – bez obecności innych czworonogów.',
+        price: '+70 zł / doba',
+        sel: this.optSoleDog
+      }] : []),
+      {
+        id: 'optWeekend',
+        name: 'Weekend (sobota – niedziela)',
+        desc: 'Dopłata +10 zł do stawki bazowej za dzień przypadający w weekend.',
+        price: '+10 zł / dzień',
+        sel: this.optWeekend
+      },
+      {
+        id: 'optHoliday',
+        name: 'Święta i dni wolne od pracy',
+        desc: 'Sylwester, Nowy Rok, Boże Narodzenie, majówka, Wielkanoc itp. (+50% bazy).',
+        price: '+50% stawki',
+        sel: this.optHoliday
+      },
+      {
+        id: 'optMeds',
+        name: 'Podawanie leków',
+        desc: 'Codzienne, punktualne i bezstresowe podawanie leków, kropli lub zastrzyków.',
+        price: '+10 zł / dzień',
+        sel: this.optMeds
+      },
+      {
+        id: 'optLastMinute',
+        name: 'Rezerwacja last minute (mniej niż 5 dni przed terminem)',
+        desc: 'Ekspresowa organizacja opieki wymagająca szybkiego przestawienia planów.',
+        price: '+50 zł jednorazowo',
+        sel: this.optLastMinute
+      },
+      {
+        id: 'optEarlyLate',
+        name: 'Nietypowe godziny przekazania psa',
+        desc: 'Przyjazd przed 8:00 rano LUB odbiór po 22:00.',
+        price: '+50 zł jednorazowo',
+        sel: this.optEarlyLate
+      }
+    ];
+
+    const curEstimate = this.calc().estimateText;
+
+    const items = opts.map(o => `
+      <button class="bk-opt-item${o.sel ? ' sel' : ''}" data-opt="${o.id}" type="button">
+        <div class="bk-opt-box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M3 8l3.5 3.5L13 4.5"/></svg></div>
+        <div class="bk-opt-info">
+          <div class="bk-opt-name">${o.name}</div>
+          <div class="bk-opt-desc">${o.desc}</div>
+        </div>
+        <div class="bk-opt-price">${o.price}</div>
+      </button>`).join('');
+
+    return `<h4 class="bk-step-title">Krok 3: Dodatkowe czynniki &amp; dopłaty</h4>
+      <p class="bk-step-sub">Zaznacz opcje dopasowane do Twojego pupila. Cechy wynikające z kalendarza zostały zaznaczone automatycznie.</p>
+      <div class="bk-opt-list">${items}</div>
       <div class="bk-nav">
         <button class="bk-btn-back" id="bk-b3" type="button">← Wstecz</button>
-        <button class="bk-btn-next off" id="bk-n3" type="button">Wyślij rezerwację →</button>
+        <div class="bk-live-bar">Szacunek całkowity: <em>${curEstimate}</em></div>
+        <button class="bk-btn-next" id="bk-n3" type="button">Podsumowanie i wycena →</button>
       </div>`;
   },
 
   step4() {
-    const s=this.svcObj(), range=this.isRange();
-    const dateStr=range?`${this.fmt(this.date)} – ${this.fmt(this.dateEnd)} (${this.nightLabel(this.nights())})`:`${this.fmt(this.date)} · ${this.time}`;
-    return `<div class="bk-confirm-wrap">
-        <div class="bk-confirm-icon">✓</div>
-        <h4 class="bk-step-title serif" style="text-align:center">Rezerwacja wysłana!</h4>
-        <p class="bk-confirm-msg">Dziękuję za zaufanie. Skontaktuję się z Tobą wkrótce, aby potwierdzić szczegóły.<br><br>
-          <strong style="color:var(--currant)">${s?.name}<br>${dateStr}</strong></p>
-        <button class="bk-btn-next" onclick="BK.reset()" type="button">Nowa rezerwacja</button>
+    const s = this.svcObj();
+    const calculation = this.calc();
+    const dateStr = this.fmtRange();
+
+    const breakdownRows = calculation.breakdown.map(b => `
+      <div class="bk-breakdown-row">
+        <span>${b.label}</span>
+        <strong>+${b.val} zł</strong>
+      </div>`).join('');
+
+    return `<h4 class="bk-step-title">Krok 4: Podsumowanie i wycena</h4>
+      <p class="bk-step-sub">Zapoznaj się z orientacyjną wyceną i uzupełnij swoje dane, aby przesłać zapytanie do Magdy.</p>
+      
+      <div class="bk-estimate-card">
+        <div class="bk-est-head">
+          <div>
+            <span class="bk-est-title">Szacunkowy koszt usługi</span>
+            <div class="hi" style="font-size:1.05rem;color:var(--currant);margin-top:2px">${s?.name} · ${dateStr}</div>
+          </div>
+          <div class="bk-est-big">${calculation.estimateText}</div>
+        </div>
+        <div class="bk-breakdown">
+          ${breakdownRows}
+        </div>
+        <div class="bk-est-note">
+          Szacunkowy koszt usługi wyliczony na podstawie wprowadzonych parametrów. Ostateczne szczegóły i termin potwierdzamy po bezpłatnym spotkaniu zapoznawczym.
+        </div>
+      </div>
+
+      <div class="f2">
+        <div class="fg"><label>Imię i nazwisko *</label><input id="bk-nm" type="text" placeholder="Jan Kowalski" value="${this.name}" autocomplete="name" required></div>
+        <div class="fg"><label>Telefon</label><input id="bk-tel" type="tel" placeholder="+48 000 000 000" value="${this.phone}" autocomplete="tel"></div>
+      </div>
+      <div class="fg"><label>E-mail *</label><input id="bk-em" type="email" placeholder="twoj@email.pl" value="${this.email}" autocomplete="email" required></div>
+      <div class="fg"><label>Opowiedz mi o swoim pupilu</label><textarea id="bk-pet" placeholder="Imię, rasa, wiek, zachowanie, relacje z innymi zwierzętami, zwyczaje spacerowe i żywieniowe…">${this.pet}</textarea></div>
+
+      <div class="bk-nav">
+        <button class="bk-btn-back" id="bk-b4" type="button">← Wstecz</button>
+        <button class="bk-btn-next off" id="bk-n4" type="button">Wyślij to zapytanie do Magdy →</button>
       </div>`;
   },
 
+  step5() {
+    const s = this.svcObj();
+    const calculation = this.calc();
+    const dateStr = this.fmtRange();
+
+    const mailSubject = encodeURIComponent(`Zapytanie o rezerwację (${s?.name}) - ${this.name}`);
+    const mailBody = encodeURIComponent(
+      `Dzień dobry Magdo,\n\n` +
+      `Przesyłam zapytanie o opiekę ze strony Petsitter Porzeczka:\n\n` +
+      `Usługa: ${s?.name}\n` +
+      `Termin: ${dateStr}\n` +
+      `Szacunkowy koszt: ${calculation.estimateText}\n\n` +
+      `Parametry kalkulacji:\n` +
+      calculation.breakdown.map(b => `- ${b.label}: +${b.val} zł`).join('\n') + '\n\n' +
+      `Dane kontaktowe:\n` +
+      `Imię i nazwisko: ${this.name}\n` +
+      `Telefon: ${this.phone || 'brak'}\n` +
+      `E-mail: ${this.email}\n` +
+      `O pupilu: ${this.pet || 'brak dodatkowych informacji'}\n\n` +
+      `Pozdrawiam,\n${this.name}`
+    );
+
+    return `<div class="bk-confirm-wrap">
+        <div class="bk-confirm-icon">✓</div>
+        <h4 class="bk-step-title serif" style="text-align:center">Zapytanie wysłane!</h4>
+        <p class="bk-confirm-msg">Dziękuję za zaufanie, <strong>${this.name}</strong>! Twoje zapytanie z parametrami opieki zostało zarejestrowane. Skontaktuję się z Tobą w ciągu kilku godzin.</p>
+        
+        <div class="bk-summary-box">
+          <div><strong>Wybrana usługa:</strong> ${s?.name}</div>
+          <div><strong>Termin:</strong> ${dateStr}</div>
+          <div><strong>Szacunkowy koszt:</strong> <span class="hi-val">${calculation.estimateText}</span></div>
+          <div style="margin-top:6px;font-size:.76rem;color:var(--ink3)">Potwierdzenie dla: ${this.email}</div>
+        </div>
+
+        <div class="bk-actions">
+          <a href="mailto:kontakt@porzeczkapet.pl?subject=${mailSubject}&body=${mailBody}" class="bk-btn-ghost">Wyślij kopię przez e-mail</a>
+          <button class="bk-btn-ghost" id="bk-copy-btn" type="button">Kopiuj podsumowanie</button>
+          <button class="bk-btn-next" onclick="BK.reset()" type="button">Nowa rezerwacja</button>
+        </div>
+      </div>
+      <div id="bk-toast" class="bk-toast">Skopiowano podsumowanie do schowka!</div>`;
+  },
+
   bind() {
-    this.el().querySelectorAll('.bk-svc-opt').forEach(b=>{
-      b.addEventListener('click',()=>{this.svc=b.dataset.svc;this.date=null;this.dateEnd=null;this.time=null;this.render();});
-    });
-    this.el().querySelectorAll('.bk-cal-nav-btn').forEach(b=>{
-      b.addEventListener('click',()=>{
-        this.calM+=parseInt(b.dataset.dir);
-        if(this.calM>11){this.calM=0;this.calY++;}
-        if(this.calM<0){this.calM=11;this.calY--;}
+    this.el().querySelectorAll('.bk-svc-opt').forEach(b => {
+      b.addEventListener('click', () => {
+        this.svc = b.dataset.svc;
+        this.date = null;
+        this.dateEnd = null;
+        this.days = 1;
+        this.visits = 1;
+        this.hours = 1;
+        this.walks = 1;
         this.render();
       });
     });
-    this.el().querySelectorAll('.bk-day:not(.unavail)').forEach(b=>{
-      b.addEventListener('click',()=>{
-        const d=new Date(this.calY,this.calM,parseInt(b.dataset.d));
-        if(this.isRange()){
-          if(!this.date||(this.date&&this.dateEnd)){
-            this.date=d; this.dateEnd=null;
+
+    this.el().querySelectorAll('.bk-cal-nav-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        this.calM += parseInt(b.dataset.dir);
+        if(this.calM > 11){ this.calM = 0; this.calY++; }
+        if(this.calM < 0){ this.calM = 11; this.calY--; }
+        this.render();
+      });
+    });
+
+    this.el().querySelectorAll('.bk-day:not(.unavail)').forEach(b => {
+      b.addEventListener('click', () => {
+        const d = new Date(this.calY, this.calM, parseInt(b.dataset.d));
+        if(this.isRange()) {
+          if(!this.date || (this.date && this.dateEnd)) {
+            this.date = d;
+            this.dateEnd = null;
+            this.days = 1;
           } else {
-            if(d>this.date){ this.dateEnd=d; }
-            else if(d.getTime()===this.date.getTime()){ this.date=null; }
-            else { this.date=d; this.dateEnd=null; }
+            if(d > this.date) {
+              this.dateEnd = d;
+              this.days = Math.max(1, Math.round((this.dateEnd - this.date) / 86400000));
+            } else if(d.getTime() === this.date.getTime()) {
+              this.date = null;
+              this.dateEnd = null;
+              this.days = 1;
+            } else {
+              this.date = d;
+              this.dateEnd = null;
+              this.days = 1;
+            }
           }
         } else {
-          this.date=d; this.time=null;
+          this.date = d;
+        }
+        this.detectDateFeatures();
+        this.render();
+      });
+    });
+
+    this.el().querySelectorAll('.bk-time-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        this.time = b.dataset.t;
+        if(b.dataset.early === 'true') {
+          this.optEarlyLate = true;
         }
         this.render();
       });
     });
-    this.el().querySelectorAll('.bk-time-btn').forEach(b=>{
-      b.addEventListener('click',()=>{this.time=b.dataset.t;this.render();});
+
+    this.el().querySelectorAll('.bk-step-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        const act = b.dataset.act;
+        if(act === 'days-inc') {
+          this.days++;
+          if(this.date) {
+            this.dateEnd = new Date(this.date.getTime() + this.days * 86400000);
+            this.detectDateFeatures();
+          }
+        } else if(act === 'days-dec') {
+          if(this.days > 1) {
+            this.days--;
+            if(this.date) {
+              this.dateEnd = new Date(this.date.getTime() + this.days * 86400000);
+              this.detectDateFeatures();
+            }
+          }
+        } else if(act === 'hours-inc') {
+          if(this.hours < 8) this.hours++;
+        } else if(act === 'hours-dec') {
+          if(this.hours > 1) this.hours--;
+        } else if(act === 'visits-inc') {
+          this.visits++;
+        } else if(act === 'visits-dec') {
+          if(this.visits > 1) this.visits--;
+        } else if(act === 'walks-inc') {
+          this.walks++;
+        } else if(act === 'walks-dec') {
+          if(this.walks > 1) this.walks--;
+        }
+        this.render();
+      });
     });
-    const n1=document.getElementById('bk-n1'),n2=document.getElementById('bk-n2'),n3=document.getElementById('bk-n3');
-    const b2=document.getElementById('bk-b2'),b3=document.getElementById('bk-b3');
-    if(n1) n1.addEventListener('click',()=>{this.step=2;this.render();});
-    if(n2) n2.addEventListener('click',()=>{this.step=3;this.render();});
-    if(n3){
-      const nm=document.getElementById('bk-nm'),em=document.getElementById('bk-em');
-      const check=()=>{n3.classList.toggle('off',!(nm.value.trim()&&em.value.trim()&&em.checkValidity()));};
-      nm.addEventListener('input',check);
-      em.addEventListener('input',check);
-      n3.addEventListener('click',()=>{this.step=4;this.render();});
+
+    this.el().querySelectorAll('.bk-opt-item').forEach(b => {
+      b.addEventListener('click', () => {
+        const opt = b.dataset.opt;
+        if(opt && this.hasOwnProperty(opt)) {
+          this[opt] = !this[opt];
+          this.render();
+        }
+      });
+    });
+
+    const n1 = document.getElementById('bk-n1');
+    const n2 = document.getElementById('bk-n2');
+    const n3 = document.getElementById('bk-n3');
+    const n4 = document.getElementById('bk-n4');
+    const b2 = document.getElementById('bk-b2');
+    const b3 = document.getElementById('bk-b3');
+    const b4 = document.getElementById('bk-b4');
+
+    if(n1) n1.addEventListener('click', () => { this.step = 2; this.render(); });
+    if(n2) n2.addEventListener('click', () => { this.step = 3; this.render(); });
+    if(n3) n3.addEventListener('click', () => { this.step = 4; this.render(); });
+    if(b2) b2.addEventListener('click', () => { this.step = 1; this.render(); });
+    if(b3) b3.addEventListener('click', () => { this.step = 2; this.render(); });
+    if(b4) b4.addEventListener('click', () => { this.step = 3; this.render(); });
+
+    if(n4) {
+      const nm = document.getElementById('bk-nm');
+      const em = document.getElementById('bk-em');
+      const tel = document.getElementById('bk-tel');
+      const pet = document.getElementById('bk-pet');
+      const check = () => {
+        this.name = (nm && nm.value) ? nm.value : '';
+        this.email = (em && em.value) ? em.value : '';
+        if(tel) this.phone = tel.value || '';
+        if(pet) this.pet = pet.value || '';
+        const valid = this.name.trim().length >= 2 && this.email.trim().length >= 5 && (!em || !em.checkValidity || em.checkValidity());
+        n4.classList.toggle('off', !valid);
+      };
+      if(nm) nm.addEventListener('input', check);
+      if(em) em.addEventListener('input', check);
+      if(tel) tel.addEventListener('input', () => { this.phone = tel.value; });
+      if(pet) pet.addEventListener('input', () => { this.pet = pet.value; });
+      check();
+      n4.addEventListener('click', () => {
+        if(!n4.classList.contains('off')) {
+          this.step = 5;
+          this.render();
+        }
+      });
     }
-    if(b2) b2.addEventListener('click',()=>{this.step=1;this.render();});
-    if(b3) b3.addEventListener('click',()=>{this.step=2;this.render();});
-    this.el().querySelectorAll('button').forEach(el=>{
-      el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-      el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+
+    const copyBtn = document.getElementById('bk-copy-btn');
+    if(copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const s = this.svcObj();
+        const calculation = this.calc();
+        const text = `Petsitter Porzeczka - Rezerwacja\n` +
+          `Usługa: ${s?.name}\n` +
+          `Termin: ${this.fmtRange()}\n` +
+          `Szacunkowy koszt: ${calculation.estimateText}\n\n` +
+          `Parametry:\n` +
+          calculation.breakdown.map(b => `- ${b.label}: +${b.val} zł`).join('\n') + '\n\n' +
+          `Klient: ${this.name}\n` +
+          `Telefon: ${this.phone || 'brak'}\n` +
+          `E-mail: ${this.email}\n` +
+          `O pupilu: ${this.pet || 'brak'}`;
+        navigator.clipboard.writeText(text).then(() => {
+          const t = document.getElementById('bk-toast');
+          if(t) {
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2500);
+          }
+        }).catch(() => {});
+      });
+    }
+
+    this.el().querySelectorAll('button,a,.bk-svc-opt,.bk-day,.bk-time-btn,.bk-cal-nav-btn,.bk-opt-item,.bk-step-btn,.bk-btn-ghost').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
     });
   },
 
-  reset(){ this.step=1;this.svc=null;this.date=null;this.dateEnd=null;this.time=null;this.render(); }
+  reset() {
+    this.step = 1;
+    this.svc = 'calodobowa';
+    this.date = null;
+    this.dateEnd = null;
+    this.time = '10:00';
+    this.days = 1;
+    this.visits = 1;
+    this.hours = 1;
+    this.walks = 1;
+    this.optPuppy = false;
+    this.optSoleDog = false;
+    this.optWeekend = false;
+    this.optHoliday = false;
+    this.optMeds = false;
+    this.optLastMinute = false;
+    this.optEarlyLate = false;
+    this.name = '';
+    this.phone = '';
+    this.email = '';
+    this.pet = '';
+    this.render();
+  }
 };
 
 BK.render();

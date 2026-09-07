@@ -1,0 +1,33 @@
+Jak to teraz wygląda w całości (struktura dla twórcy strony / wtyczki):
+Wybór usługi (Wizyta / Spacer / Opieka całodobowa) -> baza
+Liczba dni / godzin -> mnożnik
+Cechy pupila (np. szczeniak) -> dopłata
+Kalendarz / Termin (Weekend / Święta / Rezerwacja na less niż 5 dni przed) -> dopłaty
+Godziny logistyczne (Wcześnie rano / Późno wieczór) -> dopłata
+Wynik ostateczny: Orientacyjna kwota + Przycisk „Wyślij zapytanie z tymi parametrami”.
+
+Krok 1: Wybór usługi głównej (Wybierz jedną opcję)
+[ ] Wizyta domowa (dla kota/gryzonia) – wyjściowa baza 55zł +15zl za każdą kolejną godzinę  
+[ ] Opieka całodobowa / domowa u Sittera – wyjściowa baza 100 zł za dobę
+
+Krok 2: Czas trwania / Liczba dni lub wizyt
+Suwak lub pole numeryczne: Ile dni / ile wizyt / ile godzin? (system mnoży bazę przez tę liczbę).
+
+Krok 3: Dodatkowe czynniki i dopłaty (Zaznacz opcjonalne)
+
+[ ] Szczeniak (do 1. roku życia) / pies wymagający szczególnej uwagi -> dopłata +50zł / za dobę szczeniak, pies z lekiem separacyjnym (szczeniaki to więcej pracy, zniszczenia i nauka czystości, więc wyższa stawka jest w pełni uzasadniona!).
++70zl pies który musi być jedtnym psem podczas opieki. 
+
+[ ] Weekend (sobota - niedziela) -> dopłata +10 zł do stawki bazowej.
+[ ] Święta i dni wolne (np. Sylwester, Boże Narodzenie, majówka) -> dopłata +50% (w tym czasie Twoja wolna przestrzeń jest najcenniejsza).
+[ ] Podawanie leków-> dopłata dzienna + 10 zł.
+Krok 4: Podsumowanie i wycena
+Ekran końcowy: Wyświetla się szacowany koszt (np. „Szacunkowy koszt usługi: ok. 350-400 zł”).
+Przycisk CTA: „Wyślij to zapytanie do [Twoje Imię]” (klient klikając, od razu przesyła Ci gotowe podsumowanie swoich zaznaczonych opcji w wiadomości lub formularzu).
+
+[ ] Rezerwacja last minute (zgłoszenie na mniej niż 5 dni przed terminem opieki)
+Dopłata jednorazowa: +50 zł
+(Ewentualny podtekst dla klienta w opisie: „Szybkie organizowanie terminów wymaga zmiany moich osobistych planów” / chroni Cię przed sytuacjami „na wczoraj”).
+[ ] Nietypowe godziny przekazania psa (przyjazd przed 8:00 rano LUB odbiór po 22:00)
+Dopłata jednorazowa: +50 zł
+(Opis dla klienta: „Dotyczy konieczności wczesnego otwarcia dnia lub dyspozycyjności późnym wieczorem”).
