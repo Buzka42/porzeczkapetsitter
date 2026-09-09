@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petsitter Porzeczka · Warszawa</title>
-  <meta name="description" content="Magda – profesjonalna petsitterka w Warszawie. Indywidualna opieka nad psami i kotami." />
+  <meta name="description" content="Magdalena 'Porzeczka' Poręcka – profesjonalna petsitterka w Warszawie. Indywidualna opieka nad psami, kotami i zwierzętami egzotycznymi." />
   <meta name="theme-color" content="#16100D" />
   <meta property="og:title" content="Petsitter Porzeczka · Warszawa" />
   <meta property="og:description" content="Twój pupil w dobrych rękach. Profesjonalna, indywidualna opieka nad psami i kotami w Warszawie." />
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
 /* ═══ TOKENS ═══════════════════════════════ */
@@ -95,7 +95,7 @@ body.quote-zone.hov #cr{border-color:rgba(255,255,255,.85)}
 nav{position:fixed;inset:0 0 auto 0;z-index:200;padding:28px 0;transition:padding .5s var(--ease),background .5s,box-shadow .5s}
 nav.sc{padding:14px 0;background:rgba(247,243,238,.93);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
 .nav-in{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;font-style:italic;display:flex;align-items:center;color:#fff;transition:color .5s;letter-spacing:.01em}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;font-style:italic;display:flex;align-items:center;gap:.7rem;color:#fff;transition:color .5s;letter-spacing:.01em}
 .logo em{font-style:italic;color:rgba(212,160,185,.9)}
 nav.sc .logo{color:var(--ink)}
 nav.sc .logo em{color:var(--currant)}
@@ -145,19 +145,28 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 #about{padding:140px 0}
 .about-grid{display:grid;grid-template-columns:420px 1fr;gap:112px;align-items:start}
 .about-img-col{position:relative}
-.about-img-frame{position:relative;overflow:hidden;border-radius:6px 40px 6px 40px;aspect-ratio:3/4}
-.about-img-frame img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1s var(--ease)}
+@media(min-width:901px){
+  .about-img-col{position:sticky;top:96px;align-self:start}
+}
+.about-img-frame{position:relative;overflow:hidden;border-radius:6px 40px 6px 40px;aspect-ratio:4/5;box-shadow:0 18px 45px rgba(22,16,13,.08)}
+.about-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform 1s var(--ease)}
 .about-img-col:hover .about-img-frame img{transform:scale(1.04)}
-.about-caption{position:absolute;bottom:-24px;right:-24px;background:var(--currant);color:#fff;padding:28px 32px;border-radius:4px 24px 4px 24px;min-width:160px}
+.about-caption{position:absolute;bottom:-24px;right:-24px;background:var(--currant);color:#fff;padding:28px 32px;border-radius:4px 24px 4px 24px;min-width:160px;box-shadow:0 10px 25px rgba(89,25,55,.25)}
 .about-caption strong{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;line-height:1;display:block}
 .about-caption span{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
-.about-text-col{padding-top:32px}
+.about-text-col{padding-top:16px}
 .about-label{margin-bottom:1.6rem}
-.about-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:300;line-height:1.08;margin-bottom:2.8rem}
+.about-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:300;line-height:1.08;margin-bottom:2.2rem}
 .about-h2 em{font-style:italic}
-.about-pull{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:300;font-style:italic;color:var(--currant);line-height:1.55;padding-left:1.4rem;border-left:2px solid var(--currant);margin-bottom:2.2rem}
-.about-body p{font-size:.93rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem}
-.about-sig{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--currant);margin-top:2.4rem}
+.about-body p{font-size:.95rem;color:var(--ink2);line-height:1.85;margin-bottom:1.4rem}
+.about-subhead{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.4vw,1.9rem);font-weight:400;color:var(--ink);margin:2.4rem 0 1.2rem;display:flex;align-items:center;gap:.8rem}
+.about-subhead::after{content:'';flex:1;height:1px;background:var(--border);opacity:.7}
+.about-features{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:1.6rem}
+.about-feature-item{padding:14px 18px;border-radius:6px 16px 6px 16px;background:rgba(239,232,222,.45);border:1px solid var(--border)}
+.about-feature-item p{font-size:.92rem;color:var(--ink2);line-height:1.75;margin-bottom:0}
+.about-feature-item strong{color:var(--currant);font-weight:500}
+.about-sig-row{display:inline-flex;align-items:center;gap:1.4rem;margin-top:2.6rem}
+.about-sig{font-family:'Caveat',cursive;font-size:clamp(2rem,3.4vw,2.7rem);font-weight:600;color:var(--currant);line-height:1.15;letter-spacing:.01em}
 
 /* ═══ SERVICES ══════════════════════════════ */
 #uslugi{background:var(--cream);padding:140px 0}
@@ -197,13 +206,16 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .svc-rule-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--currant);white-space:nowrap;flex-shrink:0}
 
 /* ═══ QUOTE INTERSTITIAL ════════════════════ */
-#quote{background:var(--currant);padding:120px 0;overflow:hidden;position:relative}
-#quote::after{content:'';position:absolute;inset:0;opacity:.05;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;mix-blend-mode:overlay}
-.quote-deco{position:absolute;top:-.1em;left:48px;font-family:'Cormorant Garamond',serif;font-size:28rem;font-weight:300;line-height:1;color:rgba(255,255,255,.06);pointer-events:none;user-select:none}
-.quote-inner{position:relative;z-index:1;text-align:center;max-width:800px;margin:0 auto}
+#quote{background:var(--currant);padding:140px 0;overflow:hidden;position:relative}
+.quote-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.quote-bg img{width:100%;height:100%;object-fit:cover;opacity:.28;mix-blend-mode:luminosity;filter:contrast(1.15) brightness(1.05);transform:scale(1.02)}
+.quote-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(89,25,55,.82) 0%,rgba(89,25,55,.96) 85%)}
+#quote::after{content:'';position:absolute;inset:0;z-index:1;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;mix-blend-mode:overlay}
+.quote-deco{position:absolute;top:-.1em;left:48px;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28rem;font-weight:300;line-height:1;color:rgba(255,255,255,.05);pointer-events:none;user-select:none}
+.quote-inner{position:relative;z-index:2;text-align:center;max-width:800px;margin:0 auto}
 .quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:#fff;line-height:1.55;margin-bottom:2.4rem}
-.quote-author{display:flex;align-items:center;justify-content:center;gap:1rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.quote-author::before,.quote-author::after{content:'';width:40px;height:1px;background:rgba(255,255,255,.25)}
+.quote-author{display:flex;align-items:center;justify-content:center;gap:1rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.quote-author::before,.quote-author::after{content:'';width:40px;height:1px;background:rgba(255,255,255,.3)}
 
 /* ═══ GALLERY ═══════════════════════════════ */
 #galeria{padding:140px 0 0;background:var(--parchment)}
@@ -252,10 +264,10 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .c-socials{display:flex;gap:.6rem;margin-top:2rem}
 .c-soc{width:44px;height:44px;border-radius:4px 14px 4px 14px;border:1.5px solid var(--border);color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,color .3s,background .3s,transform .35s var(--ease)}
 .c-soc:hover{transform:translateY(-2px)}
-.c-soc:hover{border-color:var(--currant);color:var(--currant);background:var(--currant-bg)}
-.c-soc svg{width:17px;height:17px}
-.c-free{margin-top:2.4rem;padding:20px 24px;background:var(--currant-bg);border:1px solid #E5D3DD;border-radius:4px 24px 4px 24px;font-size:.84rem;color:var(--ink2);line-height:1.75}
-.c-free strong{color:var(--currant);font-weight:500}
+.c-free{margin-top:2.4rem;padding:20px 24px;background:var(--currant-bg);border:1px solid #E5D3DD;border-radius:4px 24px 4px 24px}
+.c-free-kicker{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--currant);font-weight:600;margin-bottom:4px}
+.c-free strong{font-family:'Cormorant Garamond',serif;font-size:1.24rem;color:var(--currant);font-weight:500;display:block;margin-bottom:6px;line-height:1.2}
+.c-free p{font-size:.82rem;color:var(--ink2);line-height:1.6}
 
 /* ════════════════════════════════════════════
    BOOKING WIDGET
@@ -406,7 +418,7 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 /* ═══ FOOTER ════════════════════════════════ */
 footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-top:1px solid rgba(250,247,243,.08)}
 .foot{display:flex;align-items:center;justify-content:space-between}
-.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:rgba(250,247,243,.75)}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:rgba(250,247,243,.75);display:flex;align-items:center;gap:.65rem}
 .foot-logo em{font-style:italic;color:rgba(212,160,185,.75)}
 .foot-copy{font-size:.75rem}
 .foot-links{display:flex;gap:1.6rem;list-style:none;font-size:.75rem}
@@ -530,21 +542,38 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
   <div class="w">
     <div class="about-grid">
       <div class="about-img-col rv">
-        <div class="about-img-frame"><img src="about.jpg" alt="Magda – Petsitter Porzeczka" loading="lazy"></div>
+        <div class="about-img-frame"><img src="about.png" alt="Magdalena 'Porzeczka' Poręcka – Petsitter Porzeczka" loading="lazy"></div>
         <div class="about-caption"><strong>15+</strong><span>lat doświadczenia</span></div>
       </div>
       <div class="about-text-col">
         <p class="label about-label rv">O mnie</p>
         <h2 class="about-h2">
           <span class="line-wrap"><span class="line-inner rv">Cześć,</span></span>
-          <span class="line-wrap"><span class="line-inner rv d1">jestem <em>Magda</em></span></span>
+          <span class="line-wrap"><span class="line-inner rv d1">jestem <em>Porzeczka</em></span></span>
         </h2>
-        <blockquote class="about-pull rv d1">„Każde zwierzę zasługuje na opiekę, której naprawdę potrzebuje – pełną uwagi, spokoju i szacunku."</blockquote>
         <div class="about-body">
-          <p class="rv d2">Jestem certyfikowaną petsitterką z Warszawy, z prawdziwą pasją do czworonogów. Od ponad piętnastu lat opiekuję się psami i kotami, traktując każdego podopiecznego jak własnego zwierzaka.</p>
-          <p class="rv d2">Moim priorytetem jest minimalizowanie stresu i zapewnienie poczucia bezpieczeństwa – zarówno zwierzętom, jak i ich właścicielom. Regularnie wysyłam relacje ze zdjęciami, żebyś zawsze wiedział, że Twój pupil jest zadbany.</p>
+          <p class="rv d1">Zwierzęta towarzyszą mi od najmłodszych lat. W moim domowym azylu mieszkało już łącznie 15 szczurów, suseł oraz pies, a od lat jestem dumną opiekunką trzech cudownych kotów. Jeździectwo to moja wielka pasja i hobby, a woda i akwarystyka zawsze miały w moim sercu specjalne miejsce – prowadziłam zarówno małe zbiorniki z bojownikami, krewetkami i ślimakami morskimi, jak i trzy wielkie akwaria słodkowodne.</p>
+          <p class="rv d1">Jako petsitterka miałam przyjemność opiekować się niezwykle różnorodną gromadką: królikami, świnkami morskimi, chomikami, papugami, gekonami, a nawet pająkami! Świat zwierząt to dla mnie coś więcej niż praca czy pasja – od lat jestem wegetarianką i aktywnie działam na rzecz praw zwierząt.</p>
+
+          <h3 class="about-subhead rv d2">Dlaczego warto mi zaufać?</h3>
+          <div class="about-features rv d2">
+            <div class="about-feature-item">
+              <p><strong>Praktyka i wykształcenie:</strong> Zwierzętami opiekuję się od 18. roku życia. Z zaczynania od dorywczego zajęcia przeszłam do pełnego profesjonalizmu – od 4 lat prowadzę stabilną działalność w branży petsittingu. Ukończyłam dwuletnią szkołę na kierunku Technik Weterynarii, dzięki czemu Twój pupil trafia pod opiekę osoby ze stabilną wiedzą medyczną i pielęgnacyjną.</p>
+            </div>
+            <div class="about-feature-item">
+              <p><strong>Idealne otoczenie:</strong> Mieszkam w Wesołej, na osiedlu otoczonym lasem i w bardzo spokojnej okolicy. To idealne warunki na bezpieczne i relaksujące spacery bez miejskiego zgiełku.</p>
+            </div>
+            <div class="about-feature-item">
+              <p><strong>Zgrana ekipa:</strong> Nie działam całkowicie sama – mam obok siebie trójkę bliskich przyjaciół, których zaraziłam miłością do tej pracy. Wszystkich nas łączy to samo podejście i serce do zwierząt, więc w razie potrzeby możesz liczyć na pełne wsparcie naszej małej, zaufanej paczki.</p>
+            </div>
+          </div>
+
+          <h3 class="about-subhead rv d3">A prywatnie?</h3>
+          <p class="rv d3">Z wykształcenia jestem również technikiem księgarskim, a moje serce bije dla sztuki i literatury. W wolnych chwilach tworzę biżuterię z kamieni naturalnych, zajmuję się fotografią oraz rysunkiem i malarstwem. Uwielbiam się śmiać, mam słabość do dobrego stand-upu i sporo dystansu do świata.</p>
         </div>
-        <div class="about-sig rv d3">Magda</div>
+        <div class="about-sig-row rv d3">
+          <div class="about-sig">Magdalena 'Porzeczka' Poręcka</div>
+        </div>
       </div>
     </div>
   </div>
@@ -566,7 +595,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
     <div class="svc-list">
       <div class="svc-row rv">
         <span class="svc-n">01</span>
-        <div class="svc-info"><h3>Opieka całodobowa / domowa u Sittera</h3><p class="svc-desc">Wyjściowa baza 100 zł za dobę. Domowy pobyt u mnie z pełną troską, spacerami, bezpieczeństwem i codziennymi relacjami foto/wideo.</p></div>
+        <div class="svc-info"><h3>Opieka całodobowa / domowa u petsittera</h3><p class="svc-desc">Wyjściowa baza 100 zł za dobę. Domowy pobyt u mnie z pełną troską, spacerami, bezpieczeństwem i codziennymi relacjami foto/wideo.</p></div>
         <div class="svc-price"><span class="svc-price-num">od 100</span><span class="svc-price-unit">zł&nbsp;/&nbsp;doba</span></div>
         <div class="svc-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg></div>
       </div>
@@ -620,7 +649,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
             <div class="svc-rule-name">Szczeniak (do 1. r.ż.) / szczególna uwaga</div>
             <div class="svc-rule-desc">Pies z lękiem separacyjnym, nauka czystości, zniszczenia</div>
           </div>
-          <span class="svc-rule-val">+50 zł / doba</span>
+          <span class="svc-rule-val">+50% stawki</span>
         </div>
         <div class="svc-rule-item">
           <div>
@@ -661,11 +690,13 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
 
 <!-- ─── QUOTE ──────────────────────────────── -->
 <section id="quote">
+  <div class="quote-bg" aria-hidden="true"><img src="quote_atmosphere.jpg" alt="" loading="lazy"></div>
+  <div class="quote-overlay" aria-hidden="true"></div>
   <div class="quote-deco" aria-hidden="true">"</div>
   <div class="w">
     <div class="quote-inner">
       <p class="quote-text rv">„Gdy wychodzisz, Twój pupil powinien czuć się zaopiekowany, kochany i bezpieczny –<br>dokładnie tak samo, jak kiedy jesteś obok."</p>
-      <div class="quote-author rv d1">Magda</div>
+      <div class="quote-author rv d1">Porzeczka</div>
     </div>
   </div>
 </section>
@@ -682,17 +713,17 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
   <div class="gal-strip-wrap rv" id="gstrip-wrap">
     <div class="gal-strip" id="gstrip">
       <div class="gi"><img src="klienci/Artur.jpg" alt="Artur" loading="lazy"><div class="gi-overlay"><span class="gi-name">Artur</span></div></div>
-      <div class="gi is-vid"><video muted loop playsinline preload="auto"><source src="1000006961.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
+      <div class="gi is-vid"><video autoplay muted loop playsinline preload="auto"><source src="1000006961.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
       <div class="gi"><img src="klienci/Blade%20i%20Nala.jpg" alt="Blade i Nala" loading="lazy"><div class="gi-overlay"><span class="gi-name">Blade &amp; Nala</span></div></div>
       <div class="gi"><img src="klienci/Buzka.jpg" alt="Buzka" loading="lazy"><div class="gi-overlay"><span class="gi-name">Buzka</span></div></div>
       <div class="gi"><img src="klienci/Dora.jpg" alt="Dora" loading="lazy"><div class="gi-overlay"><span class="gi-name">Dora</span></div></div>
       <div class="gi"><img src="klienci/Elmo.jpg" alt="Elmo" loading="lazy"><div class="gi-overlay"><span class="gi-name">Elmo</span></div></div>
-      <div class="gi is-vid"><video muted loop playsinline preload="auto"><source src="1000006971.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
+      <div class="gi is-vid"><video autoplay muted loop playsinline preload="auto"><source src="1000006971.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
       <div class="gi"><img src="klienci/Galip.jpg" alt="Galip" loading="lazy"><div class="gi-overlay"><span class="gi-name">Galip</span></div></div>
       <div class="gi"><img src="klienci/Holly.jpeg" alt="Holly" loading="lazy"><div class="gi-overlay"><span class="gi-name">Holly</span></div></div>
       <div class="gi"><img src="klienci/Kicia.jpg" alt="Kicia" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kicia</span></div></div>
       <div class="gi"><img src="klienci/Kofi.jpeg" alt="Kofi" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kofi</span></div></div>
-      <div class="gi is-vid"><video muted loop playsinline preload="auto"><source src="1000006954.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
+      <div class="gi is-vid"><video autoplay muted loop playsinline preload="auto"><source src="1000006954.mp4" type="video/mp4"></video><div class="gi-overlay"></div></div>
       <div class="gi"><img src="klienci/Kreska.png" alt="Kreska" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kreska</span></div></div>
       <div class="gi"><img src="klienci/Kronos.jpg" alt="Kronos" loading="lazy"><div class="gi-overlay"><span class="gi-name">Kronos</span></div></div>
       <div class="gi"><img src="klienci/Lucky.jpg" alt="Lucky" loading="lazy"><div class="gi-overlay"><span class="gi-name">Lucky</span></div></div>
@@ -743,7 +774,7 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
           </div>
           <div class="c-item rv d2">
             <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><span class="c-label">E-mail</span><span class="c-val">kontakt@porzeczkapet.pl</span></div>
+            <div><span class="c-label">E-mail</span><span class="c-val"><a href="mailto:magda@petsitterporzeczka.pl">magda@petsitterporzeczka.pl</a></span></div>
           </div>
           <div class="c-item rv d3">
             <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -754,7 +785,11 @@ footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-to
           <a href="https://www.instagram.com/petsitter_porzeczka/" class="c-soc" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <a href="https://www.facebook.com/profile.php?id=61575881047110" class="c-soc" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
         </div>
-        <div class="c-free rv d3"><strong>Pierwsze spotkanie bezpłatne.</strong><br>Zawsze zaczynamy od wizyty zapoznawczej – poznaję Twojego pupila i sprawdzamy, czy będziemy dobrym duetem. Bez zobowiązań.</div>
+        <div class="c-free rv d3">
+          <div class="c-free-kicker">Spokój &amp; Bezpieczeństwo</div>
+          <strong>Pierwsze spotkanie bezpłatne</strong>
+          <p>Zawsze zaczynamy od niezobowiązującej wizyty zapoznawczej w parku lub Twoim domu. Poznajemy się, sprawdzamy wzajemne flow i upewniamy się, że Twój pupil czuje się w pełni bezpiecznie.</p>
+        </div>
       </div>
 
       <!-- ── BOOKING WIDGET ─────────────────── -->
@@ -819,35 +854,72 @@ gw.addEventListener('mouseup',()=>{gDown=false;gw.classList.remove('dragging');}
 gw.addEventListener('mousemove',e=>{if(!gDown)return;e.preventDefault();gw.scrollLeft=gScrollL-(e.pageX-gw.offsetLeft-gStartX)*1.4;});
 gw.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();gw.scrollLeft+=e.deltaY*1.2;}},{passive:false});
 
-/* ── Gallery videos – scroll-triggered autoplay (max 1 at a time) ── */
+/* ── Gallery videos – automatic playback ── */
 (()=>{
   const gw=document.getElementById('gstrip-wrap');
-  let activeVid=null;
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      const v=e.target.querySelector('video');
-      if(e.isIntersecting){
-        if(activeVid&&activeVid!==v){activeVid.pause();activeVid.currentTime=0;}
-        v.play().catch(()=>{});
-        activeVid=v;
-      } else {
-        v.pause();
-        if(activeVid===v)activeVid=null;
+  const vids=document.querySelectorAll('.gi.is-vid video');
+  if(!vids.length)return;
+
+  vids.forEach(v=>{
+    v.muted=true;
+    v.playsInline=true;
+    v.setAttribute('muted','');
+    v.setAttribute('playsinline','');
+  });
+
+  const checkVideos=()=>{
+    const vw=window.innerWidth||document.documentElement.clientWidth;
+    const vh=window.innerHeight||document.documentElement.clientHeight;
+    vids.forEach(v=>{
+      const r=v.getBoundingClientRect();
+      const inX=r.right>10&&r.left<vw-10;
+      const inY=r.bottom>10&&r.top<vh-10;
+      if(inX&&inY){
+        if(v.paused){v.play().catch(()=>{});}
+      }else{
+        if(!v.paused){v.pause();}
       }
     });
-  },{root:gw,threshold:0.55});
-  document.querySelectorAll('.gi.is-vid').forEach(el=>obs.observe(el));
+  };
+
+  if(gw)gw.addEventListener('scroll',checkVideos,{passive:true});
+  window.addEventListener('scroll',checkVideos,{passive:true});
+  window.addEventListener('resize',checkVideos,{passive:true});
+  document.addEventListener('pointerdown',checkVideos,{once:true});
+  document.addEventListener('touchstart',checkVideos,{once:true});
+
+  if('IntersectionObserver' in window){
+    const ioGal=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)checkVideos();});
+    },{threshold:[0,0.1,0.5]});
+    const galSec=document.getElementById('galeria');
+    if(galSec)ioGal.observe(galSec);
+  }
+  setTimeout(checkVideos,200);
 })();
 
 /* ── Gallery auto-scroll ─────────────────── */
 (()=>{
   const gw=document.getElementById('gstrip-wrap');
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(!gw||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   let auto=true;
+  let frame=0;
   function tick(){
     if(auto){
       gw.scrollLeft+=0.5;
       if(gw.scrollLeft>=gw.scrollWidth-gw.clientWidth)gw.scrollLeft=0;
+    }
+    frame++;
+    if(frame%25===0){
+      const vw=window.innerWidth||document.documentElement.clientWidth;
+      const vh=window.innerHeight||document.documentElement.clientHeight;
+      document.querySelectorAll('.gi.is-vid video').forEach(v=>{
+        const r=v.getBoundingClientRect();
+        const inX=r.right>10&&r.left<vw-10;
+        const inY=r.bottom>10&&r.top<vh-10;
+        if(inX&&inY){if(v.paused)v.play().catch(()=>{});}
+        else{if(!v.paused)v.pause();}
+      });
     }
     requestAnimationFrame(tick);
   }
@@ -906,7 +978,7 @@ const BK = {
   SVCS: [
     {
       id: 'calodobowa',
-      name: 'Opieka całodobowa / domowa u Sittera',
+      name: 'Opieka całodobowa / domowa u petsittera',
       price: 'od 100',
       unit: '/ doba',
       desc: 'Wyjściowa baza 100 zł za dobę. Domowy pobyt z całodobową troską, spacerami i stałym kontaktem.'
@@ -1067,8 +1139,8 @@ const BK = {
       });
 
       if(this.optPuppy) {
-        const v = qty * 50;
-        breakdown.push({ label: `Szczeniak / szczególna uwaga (${qty} × 50 zł)`, val: v });
+        const v = Math.round(baseTotal * 0.5);
+        breakdown.push({ label: 'Szczeniak / szczególna uwaga (+50% bazy)', val: v });
       }
       if(this.optSoleDog) {
         const v = qty * 70;
@@ -1099,8 +1171,8 @@ const BK = {
       });
 
       if(this.optPuppy) {
-        const v = qty * 50;
-        breakdown.push({ label: `Szczeniak / szczególna uwaga (${qty} × 50 zł)`, val: v });
+        const v = Math.round(baseTotal * 0.5);
+        breakdown.push({ label: 'Szczeniak / szczególna uwaga (+50% bazy)', val: v });
       }
       if(this.optWeekend) {
         const v = qty * 10;
@@ -1124,8 +1196,8 @@ const BK = {
       });
 
       if(this.optPuppy) {
-        const v = qty * 50;
-        breakdown.push({ label: `Szczeniak / szczególna uwaga (${qty} × 50 zł)`, val: v });
+        const v = Math.round(baseTotal * 0.5);
+        breakdown.push({ label: 'Szczeniak / szczególna uwaga (+50% bazy)', val: v });
       }
       if(this.optWeekend) {
         const v = qty * 10;
@@ -1377,8 +1449,8 @@ const BK = {
       {
         id: 'optPuppy',
         name: 'Szczeniak (do 1. roku życia) / pies wymagający szczególnej uwagi',
-        desc: 'Szczeniaki (nauka czystości, zniszczenia) lub psy z silnym lękiem separacyjnym.',
-        price: '+50 zł / doba',
+        desc: 'Szczeniaki (nauka czystości, zniszczenia) lub psy z silnym lękiem separacyjnym (+50% bazy).',
+        price: '+50% stawki',
         sel: this.optPuppy
       },
       ...(isCalodobowa ? [{
@@ -1459,7 +1531,7 @@ const BK = {
       </div>`).join('');
 
     return `<h4 class="bk-step-title">Krok 4: Podsumowanie i wycena</h4>
-      <p class="bk-step-sub">Zapoznaj się z orientacyjną wyceną i uzupełnij swoje dane, aby przesłać zapytanie do Magdy.</p>
+      <p class="bk-step-sub">Zapoznaj się z orientacyjną wyceną i uzupełnij swoje dane, aby przesłać zapytanie do Porzeczki.</p>
       
       <div class="bk-estimate-card">
         <div class="bk-est-head">
@@ -1486,7 +1558,7 @@ const BK = {
 
       <div class="bk-nav">
         <button class="bk-btn-back" id="bk-b4" type="button">← Wstecz</button>
-        <button class="bk-btn-next off" id="bk-n4" type="button">Wyślij to zapytanie do Magdy →</button>
+        <button class="bk-btn-next off" id="bk-n4" type="button">Wyślij to zapytanie do Porzeczki →</button>
       </div>`;
   },
 
@@ -1497,7 +1569,7 @@ const BK = {
 
     const mailSubject = encodeURIComponent(`Zapytanie o rezerwację (${s?.name}) - ${this.name}`);
     const mailBody = encodeURIComponent(
-      `Dzień dobry Magdo,\n\n` +
+      `Dzień dobry Porzeczko,\n\n` +
       `Przesyłam zapytanie o opiekę ze strony Petsitter Porzeczka:\n\n` +
       `Usługa: ${s?.name}\n` +
       `Termin: ${dateStr}\n` +
@@ -1525,7 +1597,7 @@ const BK = {
         </div>
 
         <div class="bk-actions">
-          <a href="mailto:kontakt@porzeczkapet.pl?subject=${mailSubject}&body=${mailBody}" class="bk-btn-ghost">Wyślij kopię przez e-mail</a>
+          <a href="mailto:magda@petsitterporzeczka.pl?subject=${mailSubject}&body=${mailBody}" class="bk-btn-ghost">Wyślij kopię przez e-mail</a>
           <button class="bk-btn-ghost" id="bk-copy-btn" type="button">Kopiuj podsumowanie</button>
           <button class="bk-btn-next" onclick="BK.reset()" type="button">Nowa rezerwacja</button>
         </div>
