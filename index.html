@@ -414,6 +414,9 @@ nav.sc .nav-cta:hover{color:var(--currant2) !important;border-color:var(--curran
 .bk-btn-next{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.6rem;background:var(--currant);color:#fff;border-radius:3px;font-size:.8rem;font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.05em;cursor:none;transition:background .3s,transform .3s,opacity .3s}
 .bk-btn-next:hover{background:var(--currant2);transform:translateY(-1px)}
 .bk-btn-next:disabled,.bk-btn-next.off{opacity:.35;pointer-events:none;transform:none}
+@keyframes bkSpin{to{transform:rotate(360deg)}}
+.bk-spinner{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:bkSpin .7s linear infinite}
+.bk-btn-next.loading{opacity:.85;pointer-events:none}
 
 /* ═══ FOOTER ════════════════════════════════ */
 footer{background:var(--ink);color:rgba(250,247,243,.4);padding:48px 0;border-top:1px solid rgba(250,247,243,.08)}
@@ -970,6 +973,8 @@ const BK = {
   phone: '',
   email: '',
   pet: '',
+  submitting: false,
+  sendSuccess: null,
 
   MONTHS: ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'],
   MONTHS_GEN: ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'],
@@ -1562,6 +1567,75 @@ const BK = {
       </div>`;
   },
 
+  async submit() {
+    if(this.submitting) return;
+    const nm = document.getElementById('bk-nm');
+    const em = document.getElementById('bk-em');
+    const tel = document.getElementById('bk-tel');
+    const pet = document.getElementById('bk-pet');
+    if(nm) this.name = nm.value.trim();
+    if(em) this.email = em.value.trim();
+    if(tel) this.phone = tel.value.trim();
+    if(pet) this.pet = pet.value.trim();
+
+    const valid = this.name.length >= 2 && this.email.length >= 5 && (!em || !em.checkValidity || em.checkValidity());
+    if(!valid) return;
+
+    this.submitting = true;
+    const n4 = document.getElementById('bk-n4');
+    if(n4) {
+      n4.classList.add('loading');
+      n4.innerHTML = '<span class="bk-spinner"></span> Wysyłanie zapytania...';
+      n4.style.pointerEvents = 'none';
+    }
+
+    const s = this.svcObj();
+    const calculation = this.calc();
+    const dateStr = this.fmtRange();
+
+    const payload = {
+      _subject: `Nowa rezerwacja: ${s?.name || 'Opieka'} – ${this.name}`,
+      _replyto: this.email,
+      _captcha: "false",
+      _template: "table",
+      "Imię i nazwisko": this.name,
+      "E-mail klienta": this.email,
+      "Telefon": this.phone || "brak",
+      "Wybrana usługa": s?.name || "",
+      "Termin": dateStr,
+      "Szacunkowy koszt": calculation.estimateText,
+      "Parametry kalkulacji": calculation.breakdown.map(b => `${b.label}: +${b.val} zł`).join("; "),
+      "O pupilu": this.pet || "brak dodatkowych informacji"
+    };
+
+    try {
+      if(window.location.protocol === 'file:') {
+        this.sendSuccess = false;
+      } else {
+        const res = await fetch("https://formsubmit.co/ajax/magdalena.porecka@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({}));
+        if(res.ok || (data && typeof data.message === 'string' && data.message.toLowerCase().includes('activation'))) {
+          this.sendSuccess = true;
+        } else {
+          this.sendSuccess = false;
+        }
+      }
+    } catch(err) {
+      this.sendSuccess = false;
+    } finally {
+      this.submitting = false;
+      this.step = 5;
+      this.render();
+    }
+  },
+
   step5() {
     const s = this.svcObj();
     const calculation = this.calc();
@@ -1584,10 +1658,15 @@ const BK = {
       `Pozdrawiam,\n${this.name}`
     );
 
+    const isSuccess = this.sendSuccess !== false;
+
     return `<div class="bk-confirm-wrap">
-        <div class="bk-confirm-icon">✓</div>
-        <h4 class="bk-step-title serif" style="text-align:center">Zapytanie wysłane!</h4>
-        <p class="bk-confirm-msg">Dziękuję za zaufanie, <strong>${this.name}</strong>! Twoje zapytanie z parametrami opieki zostało zarejestrowane. Skontaktuję się z Tobą w ciągu kilku godzin.</p>
+        <div class="bk-confirm-icon">${isSuccess ? '✓' : '✉'}</div>
+        <h4 class="bk-step-title serif" style="text-align:center">${isSuccess ? 'Zapytanie wysłane!' : 'Zapytanie przygotowane'}</h4>
+        <p class="bk-confirm-msg">${isSuccess 
+          ? `Dziękuję za zaufanie, <strong>${this.name}</strong>! Twoje zapytanie z parametrami opieki zostało zarejestrowane i przesłane. Skontaktuję się z Tobą w ciągu kilku godzin.`
+          : `Dziękuję za zaufanie, <strong>${this.name}</strong>! Twoje zapytanie zostało przygotowane. Jeśli automatyczna wysyłka została zablokowana przez przeglądarkę, kliknij poniżej, aby wysłać je bezpośrednio do Porzeczki:`
+        }</p>
         
         <div class="bk-summary-box">
           <div><strong>Wybrana usługa:</strong> ${s?.name}</div>
@@ -1597,9 +1676,14 @@ const BK = {
         </div>
 
         <div class="bk-actions">
-          <a href="mailto:magda@petsitterporzeczka.pl?subject=${mailSubject}&body=${mailBody}" class="bk-btn-ghost">Wyślij kopię przez e-mail</a>
-          <button class="bk-btn-ghost" id="bk-copy-btn" type="button">Kopiuj podsumowanie</button>
-          <button class="bk-btn-next" onclick="BK.reset()" type="button">Nowa rezerwacja</button>
+          ${isSuccess
+            ? `<a href="mailto:magda@petsitterporzeczka.pl?subject=${mailSubject}&body=${mailBody}" class="bk-btn-ghost">Wyślij kopię przez e-mail</a>
+               <button class="bk-btn-ghost" id="bk-copy-btn" type="button">Kopiuj podsumowanie</button>
+               <button class="bk-btn-next" onclick="BK.reset()" type="button">Nowa rezerwacja</button>`
+            : `<a href="mailto:magda@petsitterporzeczka.pl?subject=${mailSubject}&body=${mailBody}" class="bk-btn-next" style="display:inline-flex;align-items:center;gap:.4rem;text-decoration:none">Wyślij e-mail do Porzeczki →</a>
+               <button class="bk-btn-ghost" id="bk-copy-btn" type="button">Kopiuj podsumowanie</button>
+               <button class="bk-btn-ghost" onclick="BK.reset()" type="button">Nowa rezerwacja</button>`
+          }
         </div>
       </div>
       <div id="bk-toast" class="bk-toast">Skopiowano podsumowanie do schowka!</div>`;
@@ -1746,9 +1830,8 @@ const BK = {
       if(pet) pet.addEventListener('input', () => { this.pet = pet.value; });
       check();
       n4.addEventListener('click', () => {
-        if(!n4.classList.contains('off')) {
-          this.step = 5;
-          this.render();
+        if(!n4.classList.contains('off') && !this.submitting) {
+          this.submit();
         }
       });
     }
@@ -1805,6 +1888,8 @@ const BK = {
     this.phone = '';
     this.email = '';
     this.pet = '';
+    this.submitting = false;
+    this.sendSuccess = null;
     this.render();
   }
 };
